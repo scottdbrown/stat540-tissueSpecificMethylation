@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>stat540-tissueSpecificMethylation</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>stat540-tissueSpecificMethylation</h1>
+
+<p>Final Proposal: Tissue Specific DNA Methylation and Gene Expression</p>
+
+<p>Previous papers have found a negative correlation between gene expression and DNA methylation. We will start with differential methylation analysis of all genes between 4 neural cell lines and 4 non-neural cell lines, using methylation data from the Illumina 450K Methylation array available through the ENCODE project. The null hypothesis is that there is no tissue specific methylation between neural and other cell types. We will try a few methods of assigning a methylation state to a gene, including looking at probes within the body of the gene, in the gene promoter, and in the upstream CpG Island.</p>
+
+<p>Once we have a list of genes with tissue specific methylation between the ‘other’ and ‘neural’ groups, we will look at the expression levels of those genes using RNA-seq data (two experimental replicates for each cell line, 16 total gene expression files). We will test whether they also show tissue specific expression, and if they do, whether there is a positive or negative correlation between methylation and expression. We expect our hit-list of genes to have neural specific methylation and expression levels, thus should show some overlap with our list of neural-specific marker genes (synapsin 1&amp;2, MAP1B (Microtubule-associated protein 1B), netrin, neuron-specific enolase (NSE), vimentin, etc.).</p>
+
+<p>Ultimately, our hypothesis is that differential methylation between neural cells and other tissues will be correlated with differential gene expression, and the hit list will be especially enriched with neural specific genes. </p>
+
+<p>With extra time, we propose to validate our hit list with other non-neuronal and neuronal cell lines if available, and add in other epigenetic markers.</p>
+
+<h2>Confirmed Cell Lines (No treatment, bold is non-neuronal cell line): </h2>
+
+<p><a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibMethyl450/">http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibMethyl450/</a> - Methylation Data
+<a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibRnaSeq/">http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibRnaSeq/</a> - HAIB RNA-seq
+<a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeCshlLongRnaSeq/">http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeCshlLongRnaSeq/</a> - CSHL RNA-seq</p>
+
+<p>BE2-C (HAIB-RNASeq + HAIB 450K)</p>
+
+<p>PFSK-1 (HAIB + HAIB)</p>
+
+<p>SK-N-SH (HAIB + HAIB)</p>
+
+<p>U87 (HAIB + HAIB)</p>
+
+<p><strong>Jurkat (HAIB + HAIB) *T Cell</strong></p>
+
+<p><strong>PANC-1 (HAIB + HAIB) *Pancreatic Epithelial</strong></p>
+
+<p><strong>GM12878 (CSHL + HAIB) *B Cell</strong></p>
+
+<p><strong>HepG2 (CSHL + HAIB) *Liver Epithelial</strong></p>
+
+<h2>Methods to use:</h2>
+
+<p>To perform the methylation analysis, we will take advantage of the annotations for probes from the IlluminaHumanMethylation450K.db package. This will allow us to determine which probes to assign to which gene, and which part of the gene it belongs to. wateRmelon may be used to perform quality control on the methylation data.</p>
+
+<p>For differential methylation analysis, we will use limma. Differential expression analysis using the RNA-seq data will use limma-voom.</p>
+
+<h2>Break-down of member responsibilities:</h2>
+
+<p><strong>Jessica:</strong> Differential gene expression analysis (neuronal cells vs non-neuronal cells)
+<strong>Analise:</strong> Data clean-up &amp; exploratory analysis (batch effect btw replicates, remove outliers)
+<strong>Scott:</strong> Differential methylation analysis
+<strong>Howard:</strong> Data normalization
+<strong>Nathaniel:</strong> Differential methylation analysis</p>
+
+</body>
+
+</html>
+
