@@ -43,8 +43,8 @@ For differential methylation analysis, we will use limma. Differential expressio
 
 Break-down of member responsibilities:
 -------------------------
-**Jessica:** Differential gene expression analysis (neuronal cells vs non-neuronal cells)
-**Analise:** Data clean-up & exploratory analysis (batch effect btw replicates, remove outliers)
-**Scott:** Differential methylation analysis
-**Howard:** Data normalization
-**Nathaniel:** Differential methylation analysis
+**Jessica:** Differential gene expression analysis (neuronal cells vs non-neuronal cells)  
+**Analise:** Data clean-up & exploratory analysis (batch effect btw replicates, remove outliers)  
+**Scott:** Differential methylation analysis  
+**Howard:** Data normalization  
+**Nathaniel:** Differential methylation analysis  
