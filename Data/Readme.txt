@@ -4,4 +4,6 @@ All methylation files are from HAIB (HudsonAlpha Institute for Biotechnology). I
 
 All HAIB RNASeq files are from HAIB (obviously!). There should be two replicates and only the corrected datasets are used.
 
-Updates and Files coming up soon. - Nat. (6 March)
+All CSHL RNASeq files are from CSHL (Cold Spring Harbor Labs).
+
+Updates and Files coming up soon. - Nat. (18 March)
