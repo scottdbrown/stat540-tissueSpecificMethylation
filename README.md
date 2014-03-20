@@ -85,39 +85,40 @@ Of the 336 samples (at the patient/cell line level), 228 had both expression and
 
 Of these 87 samples, there are 26 somatic tissue (taken from a patient, see table below of counts from each tissue), 20 somatic primary (cell lines, see counts below), 21 iPS cells (different passages), and 30 hESCs.
 
-Somatic Tissues & Counts:
-||Adipose|2||
-||Adrenal|4||
-||Bladder	|2||
-||Kidney	|2||
-||Liver	|1||
-||Lung	|4||
-||Lymph.node	|2||
-||Skeletal.muscle	|2||
-||Stomach	|4||
-||Tongue	|1||
-||Ureter	|2||
+Somatic Tissues|Counts
+--------------|--------
+Adipose|2
+Adrenal|4
+Bladder	|2
+Kidney	|2
+Liver	|1
+Lung	|4
+Lymph.node	|2
+Skeletal.muscle	|2
+Stomach	|4
+Tongue	|1
+Ureter	|2
 
-Somatic Primary & Counts:
-||Fetal Lung Fibroblast	|1||
-||Fibroblast, lung	|1||
-||Human Foreskin Fibroblast	|1||
-||Human_Bladder_Smooth_Muscle_Cells	|1||
-||Human_Brain_Vascular_Smooth_Muscle_Cells	|1||
-||Human_Cardiac_Fibroblasts	|1||
-||Human_Cardiac_Fibroblasts_Adult_Atrial	|1||
-||Human_Dermal_Fibroblast	|2||
-||Human_Dermal_Fibroblasts_Fetal	|1||
-||Human_Esophageal_Smooth_Muscle_Cells	|1||
-||Human_Intrahepatic_Biliary_Epithelial_Cells	|1||
-||Human_Periodontal_Ligament_Fibroblasts	|1||
-||Human_Skeletal_Muscle_Cells	|1||
-||Keratinocyte	|2||
-||Preadipocytes_visceral	|1||
-||Renal Proximal Tubular Epithelial_Cells	|1||
-||Renal_Cortical_Epithelial	|1||
-||Renal_Epithelial_Cells	|1||
-
+Somatic Primary|Counts
+---------------|------
+Fetal Lung Fibroblast	|1
+Fibroblast, lung	|1
+Human Foreskin Fibroblast	|1
+Human_Bladder_Smooth_Muscle_Cells	|1
+Human_Brain_Vascular_Smooth_Muscle_Cells	|1
+Human_Cardiac_Fibroblasts	|1
+Human_Cardiac_Fibroblasts_Adult_Atrial	|1
+Human_Dermal_Fibroblast	|2
+Human_Dermal_Fibroblasts_Fetal	|1
+Human_Esophageal_Smooth_Muscle_Cells	|1
+Human_Intrahepatic_Biliary_Epithelial_Cells	|1
+Human_Periodontal_Ligament_Fibroblasts	|1
+Human_Skeletal_Muscle_Cells	|1
+Keratinocyte	|2
+Preadipocytes_visceral	|1
+Renal Proximal Tubular Epithelial_Cells	|1
+Renal_Cortical_Epithelial	|1
+Renal_Epithelial_Cells	|1
 
 
 Potential analysis (not a todo list, just possible ideas):  
