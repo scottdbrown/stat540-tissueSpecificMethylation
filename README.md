@@ -85,7 +85,7 @@ Supplementary Table 1 of this paper has fairly detailed information about the sa
 
 Of the 336 samples (at the patient/cell line level), 228 had both expression and methylation analysis performed. 87 of those had the methylation analysis on 450K (the rest were the older 27K array).
 
-Of these 87 samples, there are 26 somatic tissue (taken from a patient, see table below of counts from each tissue), 20 somatic primary (cell lines, see counts below), 21 iPS cells (different passages), and 30 hESCs.
+Of these 87 samples, there are 26 somatic tissue (taken from a patient, see table below of counts from each tissue), 20 somatic primary (cell lines, see counts below), 21 iPS cells (different passages), and 20 hESCs.
 
 Somatic Tissues|Counts
 --------------|--------
