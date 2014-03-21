@@ -129,3 +129,10 @@ Potential analysis (not a todo list, just possible ideas):
 5. Differential methylation between hESCs and iPSCs (cell line to cell line comparison) <- this may actually be interesting...what differences are there, if any, between a stem cell and an iPS cell? Probably already papers out there looking at this...?  
 6. With whatever genes we found that have differential methylation, do they have differential expression? Is there any correlation with expression?  
 7. If multiple ways of looking at methylation for a gene, which correlates with expression the best?  
+
+What questions do we want to answer?
+------------------------------------
+- 87 Samples, matched 450K Methylation data, Illumina bead chip expression data
+- different ways to assess methylation: try an average, then work on other part of the pipeline, and then look at different combinations of methylation region combinations (Scott, Jessica)
+- get the differential gene anaylysis pipiline working (Nat, Analise, Howard)
+-See flowchart for workflow (to be attached later)
