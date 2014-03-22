@@ -37,4 +37,4 @@ gsmToKeep <- methylMeta$geo_accession[methylMeta$title %in% meta$X450k.dataSampl
 methylDat <- methylDat[,gsmToKeep]
 methylMeta <- methylMeta[gsmToKeep,]
 # Now save the methylation data.frame and the metadata data.frame
-save(methylDat, methylMeta, file="450kMethylationData_probeLevel.RData")
+save(methylDat, methylMeta, file="../methylation/450kMethylationData_probeLevel.RData")
