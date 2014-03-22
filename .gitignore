@@ -1,8 +1,6 @@
 .Rproj.user
 .Rhistory
 .RData
-<<<<<<< HEAD
 stat540-tissueSpecificMethylation.Rproj
-=======
 540-Project.Rproj
->>>>>>> a4580f85dc3aa24de3d4bcc55261a90246836f62
+dataAcquisition/450kMethylationData_probeLevel.RData

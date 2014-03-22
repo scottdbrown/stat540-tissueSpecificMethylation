@@ -13,7 +13,7 @@
 # GSE31848 for Illumina Infinium 450K DNA Methylation
 
 # edit working directory path if needed:
-workingDir <- "~/stat540-tissueSpecificMethylation/"
+workingDir <- "~/stat540-tissueSpecificMethylation/dataAcquisition"
 setwd(workingDir)
 
 library(GEOquery)
