@@ -9,7 +9,7 @@
 # edit project root folder if needed:
 projRoot <- "~/stat540-tissueSpecificMethylation/"
 
-workingDir <- paste0(projRoot,"dataAcquisition")
+workingDir <- paste0(projRoot,"methylation")
 setwd(workingDir)
 
 library(IlluminaHumanMethylation450k.db)
