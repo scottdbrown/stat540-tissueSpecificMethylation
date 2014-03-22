@@ -17,8 +17,17 @@ workingDir <- "~/stat540-tissueSpecificMethylation/"
 setwd(workingDir)
 
 library(GEOquery)
-library(IlluminaHumanMethylation450k.db)
 
-
-#Following command crashed computer after 2.5 hours, not enough RAM.
 geoDat <- getGEO("GSE31848")
+
+methylDat <- as.data.frame(exprs(geoDat[[1]]))
+methylMeta <- pData(phenoData(geoDat[[1]]))
+# the 'title' variable in methylMeta corresponds to the 450K sample name in the supplementary table 1
+# the 'geo_accession' variable in methylMeta corresponds to the sample name in the methylDat data.frame
+
+
+# Just incase I need to go back to the raw geo download, saved in ~/GSAT @ phage.bcgsc.ca
+#save(geoDat, file="rawGeoMethyl450k.RData")
+
+# Now save the methylation data.frame and the metadata data.frame
+save(methylDat, methylMeta, file="450kMethylationData_probeLevel.RData")
