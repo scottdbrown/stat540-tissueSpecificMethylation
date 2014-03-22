@@ -42,3 +42,4 @@ methylDat <- methylDat[!is.na(methylDat$symbol),]
 # Note: takes quite a while to run (~1 hour?)
 avgMethylByGene <- apply(methylDat[,-(1:4)],2,by, methylDat$symbol, mean, na.rm=T)
 save(avgMethylByGene, file="450kMethylationData_geneLevelAverage.RData")
+
