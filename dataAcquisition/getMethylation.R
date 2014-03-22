@@ -29,5 +29,10 @@ methylMeta <- pData(phenoData(geoDat[[1]]))
 # Just incase I need to go back to the raw geo download, saved in ~/GSAT @ phage.bcgsc.ca
 #save(geoDat, file="rawGeoMethyl450k.RData")
 
+meta <- read.delim("../metadata.tsv")
+gsmToKeep <- methylMeta$geo_accession[methylMeta$title %in% meta$X450k.dataSample.Name]
+
+methylDat <- methylDat[,gsmToKeep]
+methylMeta <- methylMeta[gsmToKeep,]
 # Now save the methylation data.frame and the metadata data.frame
 save(methylDat, methylMeta, file="450kMethylationData_probeLevel.RData")
