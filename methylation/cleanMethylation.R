@@ -8,9 +8,7 @@
 setwd("~/workspace/stat540.proj/methylation")
 
 # Load libraries
-library(RColorBrewer)
 library(reshape2)
-library(gplots)
 
 # Read in data
 load("450kMethylationData_probeLevel.RData")
@@ -18,9 +16,6 @@ load("450kMethylationData_geneLevelAverage.RData")
 
 # Get me variable names
 names <- ls()
-
-# Load color scheme
-rdBu <- colorRampPalette(brewer.pal(n = 11, "RdBu"))
 
 #------------------------------
 # Functions
