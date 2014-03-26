@@ -58,14 +58,6 @@ nukeNA <- function(frame) {
 	return (na.omit(frame))
 }
 
-# Plot pearson correlation on heatmap
-plotCor <- function(frame) {
-	frameCor <- cor(frame)
-	dev.new()
-	heatmap(frameCor, scale = "none", col = rdBu(256),
-	        main = "")
-}
-
 # String match required info so we can parse group info properly
 reparse <- function(infoToGrab, frame) {
 	# All meta data has colon and a space attached to it
