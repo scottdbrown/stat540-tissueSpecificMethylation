@@ -2,7 +2,7 @@
 # Methylation Clean-up
 # Jessica Lee
 # Date created: March 24, 2014
-# Last edit: March 26, 2014
+# Last edit: March 30, 2014
 #-------------------------------------------------------------------------------
 # Set working directories
 setwd("~/workspace/stat540.proj/methylation")
@@ -105,6 +105,15 @@ reparse <- function(infoToGrab, frame) {
 	return(info)
 }
 
+# Swap the long name of stem cells based on given hash
+swapName <- function(x, swapHash){
+	if (x %in% names(swapHash)){
+		swapHash[[x]]
+	} else {
+		x
+	}
+}
+
 #------------------------------
 # Workspace
 #-------------------------------
@@ -163,6 +172,20 @@ methylMetaClean <- with(cleanMeta,
                                 gestAge = reparse("gestational age", cleanMeta),
                                 patID = reparse("patient id", cleanMeta),
                                 passNum = reparse("passage number", cleanMeta)))
+
+# Reduce name of stem cell type
+swapHash <- list("ES", "iPS", "ES.parthenote")
+names(swapHash) <- 
+	levels(methylMetaClean$cellType)[grep("stem", 
+	                                      levels(methylMetaClean$cellType))]                   
+swapHash # check if this is right
+
+# Swap the long name of stem cells
+new <- sapply(as.character(methylMetaClean$cellType), swapName, 
+              swapHash = swapHash)
+new <- unname(new)
+methylMetaClean <- cbind(methylMetaClean, cellTypeShort = new)
+
 
 # Save reshaped table
 save(methylDatClean, methylMetaClean, file="450kMethylationData_probeLevel_clean.RData")
