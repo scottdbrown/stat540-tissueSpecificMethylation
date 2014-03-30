@@ -6,3 +6,4 @@ stat540-tissueSpecificMethylation.Rproj
 methylation/450kMethylationData_probeLevel.RData
 methylation/450kMethylationData_geneLevelAverage.RData
 .DS_Store
+expression/HT12v3_expression.RData
