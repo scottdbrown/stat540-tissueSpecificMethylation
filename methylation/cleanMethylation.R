@@ -161,17 +161,20 @@ charMeta <- cleanMeta[ , grep("characteristic", colnames(cleanMeta))]
 charMeta
 
 # Reshape this factor hell
-methylMetaClean <- with(cleanMeta, 
-                     data.frame(sid = title,
-                                geo = geo_accession,
-                                cellType = reparse("cell type", cleanMeta),
-                                gender = reparse("gender", cleanMeta),
-                                cellLine = reparse("cell line", cleanMeta),
-                                tissue = reparse("tissue type", cleanMeta),
-                                fetalAdult = reparse("fetal vs adult tissue", cleanMeta),
-                                gestAge = reparse("gestational age", cleanMeta),
-                                patID = reparse("patient id", cleanMeta),
-                                passNum = reparse("passage number", cleanMeta)))
+methylMetaClean <- with(cleanMeta,
+                     		cbind(data.frame(
+                     		      sid = as.character(title),
+                              geo = as.character(geo_accession),
+                              stringsAsFactors= FALSE),
+                     			 		data.frame(
+                              cellType = reparse("cell type", cleanMeta),
+                              gender = reparse("gender", cleanMeta),
+                              cellLine = reparse("cell line", cleanMeta),
+                              tissue = reparse("tissue type", cleanMeta),
+                              fetalAdult = reparse("fetal vs adult tissue", cleanMeta),
+                              gestAge = reparse("gestational age", cleanMeta),
+                              patID = reparse("patient id", cleanMeta),
+                              passNum = reparse("passage number", cleanMeta))))
 
 # Reduce name of stem cell type
 swapHash <- list("ES", "iPS", "ES.parthenote")
