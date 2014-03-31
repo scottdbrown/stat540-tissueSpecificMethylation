@@ -13,6 +13,7 @@ library(reshape2)
 # Read in data
 load("450kMethylationData_probeLevel.RData")
 load("450kMethylationData_geneLevelAverage.RData")
+load("450kMethylationData_geneLevelPromoterAverage.RData")
 
 # Get me variable names
 names <- ls()
@@ -136,6 +137,7 @@ dataNoNA <- lapply(getData(names), nukeNA)
 # Recast cleaned methyl data
 methylDatClean <- dataNoNA$methylDat
 avgMethylByGeneClean <- dataNoNA$avgMethylByGene
+avgMethylByGenePromoterClean <- dataNoNA$avgMethylByGenePromoter
 
 # Check dimension
 lapply(getData(names), dim) # before nuke
@@ -195,3 +197,7 @@ save(methylDatClean, methylMetaClean,
      file = "450kMethylationData_probeLevel_clean.RData")
 save(avgMethylByGeneClean, 
      file = "450kMethylationData_geneLevelAverage_clean.RData")
+save(avgMethylByGenePromoterClean,
+     file = "450kMethylationData_geneLevelPromoterAverage_clean.RData")
+
+
