@@ -15,22 +15,15 @@ load("450kMethylationData_probeLevel.RData")
 load("450kMethylationData_geneLevelAverage.RData")
 load("450kMethylationData_geneLevelPromoterAverage.RData")
 
+# Load helper functions
+source("helpers.R")
+
 # Get me variable names
 names <- ls()
 
 #-------------------------------
 # Functions
 #-------------------------------
-# Get datasets specified in names vector
-getData <- function(names) {
-	getDataByName <- function(name) {
-		return (get(name))
-	}
-	data <- lapply(names, getDataByName)
-	names(data) <- names
-	return (data)
-}
-
 # Do we have NA's in the dataset?
 # If so, how many do we have?
 checkNA <- function(frame) {
