@@ -11,6 +11,7 @@ setwd("~/workspace/stat540.proj/methylation")
 library(RColorBrewer)
 library(gplots)
 library(hexbin)
+library(lattice)
 
 # Read in data
 load("450kMethylationData_probeLevel_clean.RData")
