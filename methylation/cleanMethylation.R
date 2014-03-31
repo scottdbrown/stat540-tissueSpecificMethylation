@@ -17,7 +17,7 @@ load("450kMethylationData_geneLevelAverage.RData")
 # Get me variable names
 names <- ls()
 
-#------------------------------
+#-------------------------------
 # Functions
 #-------------------------------
 # Get datasets specified in names vector
@@ -114,7 +114,7 @@ swapName <- function(x, swapHash){
 	}
 }
 
-#------------------------------
+#-------------------------------
 # Workspace
 #-------------------------------
 # Peek
@@ -191,5 +191,7 @@ methylMetaClean <- cbind(methylMetaClean, cellTypeShort = new)
 
 
 # Save reshaped table
-save(methylDatClean, methylMetaClean, file="450kMethylationData_probeLevel_clean.RData")
-save(avgMethylByGeneClean, file="450kMethylationData_geneLevelAverage_clean.RData")
+save(methylDatClean, methylMetaClean, 
+     file = "450kMethylationData_probeLevel_clean.RData")
+save(avgMethylByGeneClean, 
+     file = "450kMethylationData_geneLevelAverage_clean.RData")
