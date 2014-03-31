@@ -15,11 +15,11 @@ load("450kMethylationData_probeLevel.RData")
 load("450kMethylationData_geneLevelAverage.RData")
 load("450kMethylationData_geneLevelPromoterAverage.RData")
 
-# Load helper functions
-source("helpers.R")
-
 # Get me variable names
 names <- ls()
+
+# Load helper functions
+source("helpers.R")
 
 #-------------------------------
 # Functions
