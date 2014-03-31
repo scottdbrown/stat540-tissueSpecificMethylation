@@ -14,6 +14,7 @@
 library(preprocessCore)
 library(limma)
 
+#------------------------------------------
 #log2 transform the data:
 expDatlog  <- log2(expDat)
 
@@ -31,7 +32,7 @@ dim(omitExpNA)
 
 #CLEANING DONE#
 
-
+#-----------------------------------------------
 ##############
 ##NORMALIZATION#######
 
@@ -93,6 +94,8 @@ plot(orderedMeanCor2[1:100, ], main = "post normalization Expression Correlation
 
 ##NORMALIZATION DONE##
 
+
+#--------------------------------------------------
 ###################################
 #Differential Expression Analysis##
 ###################################
@@ -102,6 +105,7 @@ plot(orderedMeanCor2[1:100, ], main = "post normalization Expression Correlation
 #remove rows from Meta data that correspond to our outliers that were removed. 
 ##newMeta <- expMeta[-c(235,221,212),]  #don't need this anymore since the outliers are not taken out yet... 
 
+#no outliers removed at this point. 
 model.ExpDat  <- model.matrix(~characteristics_ch1.2,expMeta)
 
 ExpFit <- lmFit(NormExpDat, model.ExpDat)
