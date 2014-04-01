@@ -111,3 +111,22 @@ model.ExpDat  <- model.matrix(~characteristics_ch1.2,expMeta)
 ExpFit <- lmFit(NormExpDat, model.ExpDat)
 ExpEbFit <- eBayes(ExpFit)
 ExpTissue.Table <- topTable(ExpEbFit, number = Inf, coef = "characteristics_ch1.2cell type: Somatic.Tissue")
+
+
+#-------------------------------
+####################################
+#Try to make a more usable Meta Tabe 
+#(Sample.id, cell.type, cell.line.tissue.type, gender)
+####################################
+
+shortMeta  <- expMeta[,1:4]
+colnames(shortMeta)  <- c("Sample.id", "cell.type", "cell.line.tissue.type", "gender")
+colnames(shortMeta)
+shortMeta$Sample.id  <- row.names(shortMeta)
+shortMeta$cell.type  <- expMeta$characteristics_ch1.2
+shortMeta$cell.line.tissue.type  <- expMeta$characteristics_ch1.3
+
+gender  <- read.table(file = "expression/genderForMeta.txt") #I made this manually in excel, and used ch1.4-ch1.7 columns to figure out the genders
+shortMeta$gender  <- gender$V1
+write.table(shortMeta, file = "expression/Modified.ExpMeta.tsv", row.names = F, col.names = T)
+
