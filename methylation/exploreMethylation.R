@@ -28,7 +28,7 @@ source("helpers.R")
 # Workspace
 #-------------------------------
 # Density of Beta values
-densDat <- lapply(getData(datasets), getBeta, meta = meta)
+densDat <- lapply(getData(datasets), getBetaAvg, meta = meta)
 densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, 
                    plot.points = FALSE, xlab = "Beta")
 densPlot <- Map(addTitle, densPlot, dataAlias,
@@ -100,10 +100,7 @@ nuke <- lapply(getData(datasets), function(data){
 lapply(nuke, dim)
 
 # New name for nuked sets
-names(nuke) <- gsub("Clean", "Nuke", datasets)
-nuke <- Map(function(data, name){
-					assign(name, data, .GlobalEnv)
-				}, nuke, names(nuke))
+nuke <- castGlobal(nuke, "Clean", "Nuke")
 datasetsNuke <- names(nuke)
 
 methylMetaNuke <-
@@ -132,7 +129,7 @@ hPlot <- Map(function(dat, alias){
              hDat, dataAlias) # With clustering
 
 # Beta density
-densDat <- lapply(getData(datasetsNuke), getBeta, meta = metaNuke)
+densDat <- lapply(getData(datasetsNuke), getBetaAvg, meta = metaNuke)
 densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, 
                    plot.points = FALSE, xlab = "Beta")
 densPlot <- Map(addTitle, densPlot, dataAlias,
