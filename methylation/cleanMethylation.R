@@ -186,7 +186,9 @@ methylMetaClean <- cbind(methylMetaClean, cellTypeShort = new)
 
 
 # Save reshaped table
-save(methylDatClean, methylMetaClean, 
+save(methylMetaClean, 
+     file = "450kMethylationData_meta_clean.RData")
+save(methylDatClean,
      file = "450kMethylationData_probeLevel_clean.RData")
 save(avgMethylByGeneClean, 
      file = "450kMethylationData_geneLevelAverage_clean.RData")
