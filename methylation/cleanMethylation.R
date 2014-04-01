@@ -2,7 +2,7 @@
 # Methylation Clean-up
 # Jessica Lee
 # Date created: March 24, 2014
-# Last edit: March 30, 2014
+# Last edit: April 1, 2014
 #-------------------------------------------------------------------------------
 # Set working directories
 setwd("~/workspace/stat540.proj/methylation")

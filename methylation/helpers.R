@@ -2,6 +2,9 @@
 # Some repeatedly used functions
 # Some often used libraries
 # Saved here separately for easier reference
+# Jessica Lee
+# Date created: April 1, 2014
+# Last edit: April 1, 2014
 #-------------------------------------------------------------------------------
 # Load libraries
 library(RColorBrewer)
