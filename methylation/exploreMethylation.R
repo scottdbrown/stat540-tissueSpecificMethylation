@@ -144,9 +144,9 @@ saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.png",
 # Save no-outlier tables
 save(outL,
      file = "450kMethylationData_outlier.RData")
-save(methylDatNuke, 
+save(methylMetaNuke, 
      file = "450kMethylationData_meta_nuke.RData")
-save(methylMetaNuke,  
+save(methylDatNuke,  
      file = "450kMethylationData_probeLevel_nuke.RData")
 save(avgMethylByGeneNuke, 
      file = "450kMethylationData_geneLevelAverage_nuke.RData")
