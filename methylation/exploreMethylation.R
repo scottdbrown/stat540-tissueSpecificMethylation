@@ -2,7 +2,7 @@
 # Explore methylation data
 # Jessica Lee
 # Date created: March 24, 2014
-# Last edit: March 31, 2014
+# Last edit: April 1, 2014
 #-------------------------------------------------------------------------------
 # Set working directories
 setwd("~/workspace/stat540.proj/methylation")
@@ -33,73 +33,6 @@ source("helpers.R")
 
 # Load color scheme
 rdBu <- colorRampPalette(brewer.pal(n = 11, "RdBu"))
-
-#-------------------------------
-# Functions
-#-------------------------------
-# Get beta values
-getBeta <- function(data, meta) {
-	dens <- sapply(levels(meta$cellTypeShort), 
-              	 function(type){
-               	 rowMeans(data[ , 
-               	 	        which(meta$cellTypeShort == type)])})
-	dens <- melt(dens)
-	colnames(dens) <- c("gene", "cellType", "beta")
-	return(dens)
-}
-
-# Draw densityplot
-plotDensity <- function(frame, ...) {
-	return(densityplot(~ beta, frame, group = cellType, ...))
-}
-
-# Return heatmap data
-getHeatMat <- function(data, meta) {
-	# Matrix
-	res <- as.matrix(data)
-
-	# Check if order is right
-	check <- all(order(meta$geo) == order(colnames(res)))
-	
-	# Fix order if not
-	if (!check) {
-		res <- res[ , order(colnames(res))]
-	}
-
-	# Rename columns for convenient reference
-	colnames(res) <- with(meta, paste(geo, cellTypeShort, tissue, 
-	                            	    cellLine, sep = "_"))
-	return(res)
-}
-
-# Plot pearson correlation on heatmap
-plotCor <- function(frame, ...) {
-	frameCor <- cor(frame)
-	heatmap(frameCor, scale = "none", col = rdBu(256), ...)
-}
-
-# Plot hex scatter
-plotHex <- function(frame, ...) {
-	return(hexplom(frame, ...))
-}
-
-# Examine outlier in scatter plot against other samples
-examOutL <- function(frame, outL, nonOutL, ...) {
-	# If no outlier group is set, get non-outlier groups
-	if (missing(nonOutL)) {
-		nonOutL <- which(colnames(frame) != outLName)
-	} 
-
-	# We don't want too many samples on scatter plot (SLOW)
-	# So restrict to 5 samples
-	if(length(nonOutL) > 5) {
-		nonOutL <- sample(nonOutL, 5)
-	}
-	
-	# Plot scatter
-	cols <- which(colnames(frame) %in% c(outL, nonOutL))
-	return(plotHex(frame[ , cols], ...))
-}
 
 #-------------------------------
 # Workspace
@@ -222,7 +155,9 @@ saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.png",
 
 
 # Save no-outlier tables
-save(outL, methylMetaNuke, methylDatNuke, 
+save(outL,
+     file = "450kMethylationData_outlier.RData")
+save(methylMetaNuke, methylDatNuke, 
      file = "450kMethylationData_probeLevel_nuke.RData")
 save(avgMethylByGeneNuke, 
      file = "450kMethylationData_geneLevelAverage_nuke.RData")

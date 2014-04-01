@@ -12,6 +12,9 @@ getData <- function(names) {
 	return (data)
 }
 
+#-------------------------------
+# PLOT HELPERS
+#-------------------------------
 # Add title to a plot where place holder "alias" is (the word "alias" will be 
 # replaced by actual alias); then return the plot
 addTitle <- function(plot, alias, title) {
@@ -55,16 +58,71 @@ saveMultiPlot <- function(plots, aliases, fileName, ...) {
 	Map(callSave, plots, aliases, fileName, ...)
 }
 
-# Save a heatmap to png format
-saveHeatmap <- function(data, ...) {
-	png(...)
-	heatmap(data, ...)
-	dev.off()
+#-------------------------------
+# EXPLORE HELPERS
+#-------------------------------
+# Get beta values
+getBeta <- function(data, meta) {
+	dens <- sapply(levels(meta$cellTypeShort), 
+              	 function(type){
+               	 rowMeans(data[ , 
+               	 	        which(meta$cellTypeShort == type)])})
+	dens <- melt(dens)
+	colnames(dens) <- c("gene", "cellType", "beta")
+	return(dens)
 }
 
-# Save multiple heatmap
-saveMultiHeatmap <- function(data, alias, fileName, ...) {
-	args <- c(list(data, gsub("alias", alias, fileName)), ...)
-	do.call(savePlot, args)
+# Draw densityplot
+plotDensity <- function(frame, ...) {
+	return(densityplot(~ beta, frame, group = cellType, ...))
 }
+
+# Return heatmap data
+getHeatMat <- function(data, meta) {
+	# Matrix
+	res <- as.matrix(data)
+
+	# Check if order is right
+	check <- all(order(meta$geo) == order(colnames(res)))
+	
+	# Fix order if not
+	if (!check) {
+		res <- res[ , order(colnames(res))]
+	}
+
+	# Rename columns for convenient reference
+	colnames(res) <- with(meta, paste(geo, cellTypeShort, tissue, 
+	                            	    cellLine, sep = "_"))
+	return(res)
+}
+
+# Plot pearson correlation on heatmap
+plotCor <- function(frame, ...) {
+	frameCor <- cor(frame)
+	heatmap(frameCor, scale = "none", col = rdBu(256), ...)
+}
+
+# Plot hex scatter
+plotHex <- function(frame, ...) {
+	return(hexplom(frame, ...))
+}
+
+# Examine outlier in scatter plot against other samples
+examOutL <- function(frame, outL, nonOutL, ...) {
+	# If no outlier group is set, get non-outlier groups
+	if (missing(nonOutL)) {
+		nonOutL <- which(colnames(frame) != outLName)
+	} 
+
+	# We don't want too many samples on scatter plot (SLOW)
+	# So restrict to 5 samples
+	if(length(nonOutL) > 5) {
+		nonOutL <- sample(nonOutL, 5)
+	}
+	
+	# Plot scatter
+	cols <- which(colnames(frame) %in% c(outL, nonOutL))
+	return(plotHex(frame[ , cols], ...))
+}
+
 
