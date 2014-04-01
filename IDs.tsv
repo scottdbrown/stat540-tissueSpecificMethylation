@@ -1,0 +1,88 @@
+gsatid	HT12v3_ID	450k_ID	Sample Type	Group
+1	ES.parthenote_LLC15_passage45_____Female_317.905.1.4	ES.parthenote__LLC15_passage45_Female____317.905.1.1	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+2	ES.parthenote_LLC2_passage24_____Female_42.171.1.7	ES.parthenote__LLC2_passage24_Female____42.171.1.5	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+3	ES.parthenote_LLC6_passage16_____Female_43.172.1.1	ES.parthenote__LLC6_passage16_Female____43.172.1.5	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+4	ES.parthenote_LLC7_passage16_____Female_44.173.1.6	ES.parthenote__LLC7_passage16_Female____44.173.1.5	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+5	ES.parthenote_LLC8_passage18_____Female_45.174.1.7	ES.parthenote__LLC8_passage18_Female____45.174.1.4	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+6	ES.parthenote_LLC9_passage20_____Female_46.175.1.6	ES.parthenote__LLC9_passage20_Female____46.175.1.5	"parthenogentic embryonic stem cell, undifferentiated"	ES.parthenote
+7	ES_CM6_passage19_____Female_244.622.1.2	ES__CM6_passage19_Female____244.622.1.1	"embryonic stem cell, undifferentiated"	ES
+8	ES_FES22_passage44_____Male_23.93.2.1	ES__FES22_passage44_Male____23.93.1.1	"embryonic stem cell, undifferentiated"	ES
+9	ES_HES2_passage105_____Female_32.135.2.1	ES__HES2_passage105_Female____32.135.4.1	"embryonic stem cell, undifferentiated"	ES
+10	ES_HES4_passage57_____Male_34.117.2.1	ES__HES4_passage57_Male____34.117.4.1	"embryonic stem cell, undifferentiated"	ES
+11	ES_MEL1_passage51_____Male_35.122.2.1	ES__MEL1_passage51_Male____35.122.4.1	"embryonic stem cell, undifferentiated"	ES
+12	ES_MEL4_passage35_____Female_127.378.1.1	ES__MEL4_passage35_Female____127.378.3.1	"embryonic stem cell, undifferentiated"	ES
+13	ES_MIZ6_passage27_____Female_38.161.2.1	ES__MIZ6_passage27_Female____38.161.1.1	"embryonic stem cell, undifferentiated"	ES
+14	ES_SIVF002_passage50_____Male_290.763.1.1	ES__SIVF002_passage50_Male____290.763.1.3	"embryonic stem cell, undifferentiated"	ES
+15	ES_SIVF025_passage35_____Male_296.775.1.3	ES__SIVF025_passage35_Male____296.775.1.2	"embryonic stem cell, undifferentiated"	ES
+16	ES_SIVF043_passage12_____Male_284.754.1.1	ES__SIVF043_passage12_Male____284.754.1.3	"embryonic stem cell, undifferentiated"	ES
+17	ES_SIVF044_passage13_____Male_285.755.1.1	ES__SIVF044_passage13_Male____285.755.1.3	"embryonic stem cell, undifferentiated"	ES
+18	ES_SIVF050_passage9_____Male_280.750.1.1	ES__SIVF050_passage9_Male____280.750.1.3	"embryonic stem cell, undifferentiated"	ES
+19	ES_WA07_passage35_____Female_47.176.1.6	ES__WA07_passage35_Female____47.176.1.1	"embryonic stem cell, undifferentiated"	ES
+20	ES_WA09_passage41_____Female_87.304.7.4	ES__WA09_passage41_Female____87.304.7.1	"embryonic stem cell, undifferentiated"	ES
+21	iPS_HDF51IPS1_passage25_____Female_153.894.1.1	iPS__HDF51IPS1_passage25_Female____153.738.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+22	iPS_HDF51IPS1_passage6_____Female_153.437.2.1	iPS__HDF51IPS1_passage6_Female____153.437.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+23	iPS_HDF51IPS10_passage37_____Female_161.900.1.3	iPS__HDF51IPS10_passage37_Female____161.900.1.2	"induced pluripotent stem cell, undifferentiated"	iPS
+24	iPS_HDF51IPS10_passage6_____Female_161.445.1.2	iPS__HDF51IPS10_passage6_Female____161.445.2.1	"induced pluripotent stem cell, undifferentiated"	iPS
+25	iPS_HDF51IPS11_passage33_____Female_162.650.1.2	iPS__HDF51IPS11_passage33_Female____162.1568.1.2	"induced pluripotent stem cell, undifferentiated"	iPS
+26	iPS_HDF51IPS11_passage8_____Female_162.475.1.1	iPS__HDF51IPS11_passage8_Female____162.475.3.2	"induced pluripotent stem cell, undifferentiated"	iPS
+27	iPS_HDF51IPS12_passage33_____Female_163.651.1.1	iPS__HDF51IPS12_passage33_Female____163.651.1.3	"induced pluripotent stem cell, undifferentiated"	iPS
+28	iPS_HDF51IPS12_passage6_____Female_163.447.1.2	iPS__HDF51IPS12_passage6_Female____163.447.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+29	iPS_HDF51IPS13_passage34_____Female_164.652.1.3	iPS__HDF51IPS13_passage34_Female____164.652.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+30	iPS_HDF51IPS13_passage8_____Female_164.471.1.1	iPS__HDF51IPS13_passage8_Female____164.471.3.2	"induced pluripotent stem cell, undifferentiated"	iPS
+31	iPS_HDF51IPS2_passage34_____Female_154.644.1.1	iPS__HDF51IPS2_passage34_Female____154.644.1.2	"induced pluripotent stem cell, undifferentiated"	iPS
+32	iPS_HDF51IPS2_passage6_____Female_154.438.1.1	iPS__HDF51IPS2_passage6_Female____154.438.1.2	"induced pluripotent stem cell, undifferentiated"	iPS
+33	iPS_HDF51IPS3_passage34_____Female_155.645.1.1	iPS__HDF51IPS3_passage34_Female____155.645.1.3	"induced pluripotent stem cell, undifferentiated"	iPS
+34	iPS_HDF51IPS3_passage6_____Female_155.439.1.2	iPS__HDF51IPS3_passage6_Female____155.439.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+35	iPS_HDF51IPS5_passage34_____Female_156.646.1.1	iPS__HDF51IPS5_passage34_Female____156.646.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+36	iPS_HDF51IPS5_passage6_____Female_156.440.1.2	iPS__HDF51IPS5_passage6_Female____156.440.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+37	iPS_HDF51IPS6_passage33_____Female_157.647.1.1	iPS__HDF51IPS6_passage33_Female____157.647.1.2	"induced pluripotent stem cell, undifferentiated"	iPS
+38	iPS_HDF51IPS6_passage5_____Female_157.441.1.2	iPS__HDF51IPS6_passage5_Female____157.441.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+39	iPS_HDF51IPS7_passage33_____Female_158.648.1.2	iPS__HDF51IPS7_passage33_Female____158.648.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+40	iPS_HDF51IPS9_passage33_____Female_160.649.1.1	iPS__HDF51IPS9_passage33_Female____160.649.1.3	"induced pluripotent stem cell, undifferentiated"	iPS
+41	iPS_HDF51IPS9_passage7_____Female_160.473.1.2	iPS__HDF51IPS9_passage7_Female____160.473.1.1	"induced pluripotent stem cell, undifferentiated"	iPS
+42	Somatic.Primary_CCD1079SK______Male_128.380.1.1	Somatic.Primary__CCD1079SK__Male____128.380.3.1	Somatic.Primary	Somatic.Primary
+43	Somatic.Primary_HBdSMC265______Male_212.565.1.2	Somatic.Primary__HBdSMC265__Male____212.565.1.1	Somatic.Primary	Somatic.Primary
+44	Somatic.Primary_HBVSMC266______Male_203.556.1.2	Somatic.Primary__HBVSMC266__Male____203.556.1.1	Somatic.Primary	Somatic.Primary
+45	Somatic.Primary_HCF1______Male_215.568.1.2	Somatic.Primary__HCF1__Male____215.568.1.1	Somatic.Primary	Somatic.Primary
+46	Somatic.Primary_HCFaa1______Male_216.569.1.2	Somatic.Primary__HCFaa1__Male____216.569.1.1	Somatic.Primary	Somatic.Primary
+47	Somatic.Primary_HDF258______Female_204.557.1.2	Somatic.Primary__HDF258__Female____204.557.1.1	Somatic.Primary	Somatic.Primary
+48	Somatic.Primary_HDF51______Female_166.411.1.1	Somatic.Primary__HDF51__Female____166.411.1.2	Somatic.Primary	Somatic.Primary
+49	Somatic.Primary_HDF51______Female_166.436.1.1	Somatic.Primary__HDF51__Female____166.436.1.3	Somatic.Primary	Somatic.Primary
+50	Somatic.Primary_HESMC267______Male_207.560.1.2	Somatic.Primary__HESMC267__Male____207.560.1.1	Somatic.Primary	Somatic.Primary
+51	Somatic.Primary_HIBEpiC254______Male_213.566.1.2	Somatic.Primary__HIBEpiC254__Male____213.566.1.1	Somatic.Primary	Somatic.Primary
+52	Somatic.Primary_HPAv263______Female_217.570.1.2	Somatic.Primary__HPAv263__Female____217.570.1.1	Somatic.Primary	Somatic.Primary
+53	Somatic.Primary_HPLF260______Male_206.559.1.2	Somatic.Primary__HPLF260__Male____206.559.1.1	Somatic.Primary	Somatic.Primary
+54	Somatic.Primary_HRCEpiC255______Male_210.563.1.2	Somatic.Primary__HRCEpiC255__Male____210.563.1.1	Somatic.Primary	Somatic.Primary
+55	Somatic.Primary_HREpiC256______Male_211.564.1.2	Somatic.Primary__HREpiC256__Male____211.564.1.1	Somatic.Primary	Somatic.Primary
+56	Somatic.Primary_HRPTEpiC257______Male_209.562.1.2	Somatic.Primary__HRPTEpiC257__Male____209.562.1.1	Somatic.Primary	Somatic.Primary
+57	Somatic.Primary_HSkMC268______Female_208.561.1.2	Somatic.Primary__HSkMC268__Female____208.561.1.1	Somatic.Primary	Somatic.Primary
+58	Somatic.Primary_IMR90______Female_129.382.1.1	Somatic.Primary__IMR90__Female____129.382.3.1	Somatic.Primary	Somatic.Primary
+59	Somatic.Primary_KDIB2______Male_251.669.1.1	Somatic.Primary__KDIB2__Male____251.669.1.2	Somatic.Primary	Somatic.Primary
+60	Somatic.Primary_KERA1______Male_137.400.9.1	Somatic.Primary__KERA1__Male____137.400.3.1	Somatic.Primary	Somatic.Primary
+61	Somatic.Primary_MRC5______Male_312.891.1.1	Somatic.Primary__MRC5__Male____312.891.3.1	Somatic.Primary	Somatic.Primary
+62	Somatic.Tissue___Adipose_Adult__Patient2_Female_98.30.1.2	Somatic.Tissue__Adipose__Female_Adult__Patient2_98.30.1.1	Somatic.Tissue	Somatic.Tissue
+63	Somatic.Tissue___Adipose_Adult__Patient1_Male_98.29.1.1	Somatic.Tissue__Adipose__Male_Adult__Patient1_98.29.1.5	Somatic.Tissue	Somatic.Tissue
+64	Somatic.Tissue___Adrenal_Adult__Patient2_Female_95.30.2.2	Somatic.Tissue__Adrenal__Female_Adult__Patient2_95.30.2.1	Somatic.Tissue	Somatic.Tissue
+65	Somatic.Tissue___Adrenal_Fetal_14wk_Patient32_Female_95.414.1.2	Somatic.Tissue__Adrenal__Female_Fetal_14wk_Patient32_95.414.1.1	Somatic.Tissue	Somatic.Tissue
+66	Somatic.Tissue___Adrenal_Adult__Patient1_Male_95.29.1.2	Somatic.Tissue__Adrenal__Male_Adult__Patient1_95.29.1.7	Somatic.Tissue	Somatic.Tissue
+67	Somatic.Tissue___Adrenal_Fetal_15wk_Patient30_Male_95.412.1.3	Somatic.Tissue__Adrenal__Male_Fetal_15wk_Patient30_95.412.1.2	Somatic.Tissue	Somatic.Tissue
+68	Somatic.Tissue___Bladder_Adult__Patient2_Female_99.30.1.2	Somatic.Tissue__Bladder__Female_Adult__Patient2_99.30.1.1	Somatic.Tissue	Somatic.Tissue
+69	Somatic.Tissue___Bladder_Adult__Patient1_Male_99.29.1.1	Somatic.Tissue__Bladder__Male_Adult__Patient1_99.29.1.7	Somatic.Tissue	Somatic.Tissue
+70	Somatic.Tissue___Kidney_Fetal_14wk_Patient32_Female_143.414.1.2	Somatic.Tissue__Kidney__Female_Fetal_14wk_Patient32_143.414.1.1	Somatic.Tissue	Somatic.Tissue
+71	Somatic.Tissue___Kidney_Fetal_15wk_Patient30_Male_143.412.1.2	Somatic.Tissue__Kidney__Male_Fetal_15wk_Patient30_143.412.1.1	Somatic.Tissue	Somatic.Tissue
+72	Somatic.Tissue___Liver_Fetal_14wk_Patient32_Female_147.414.1.2	Somatic.Tissue__Liver__Female_Fetal_14wk_Patient32_147.414.1.1	Somatic.Tissue	Somatic.Tissue
+73	Somatic.Tissue___Lung_Adult__Patient2_Female_94.30.1.2	Somatic.Tissue__Lung__Female_Adult__Patient2_94.30.1.1	Somatic.Tissue	Somatic.Tissue
+74	Somatic.Tissue___Lung_Fetal_14wk_Patient32_Female_94.414.1.2	Somatic.Tissue__Lung__Female_Fetal_14wk_Patient32_94.414.1.1	Somatic.Tissue	Somatic.Tissue
+75	Somatic.Tissue___Lung_Adult__Patient1_Male_94.29.1.1	Somatic.Tissue__Lung__Male_Adult__Patient1_94.29.1.7	Somatic.Tissue	Somatic.Tissue
+76	Somatic.Tissue___Lung_Fetal_15wk_Patient30_Male_94.412.1.2	Somatic.Tissue__Lung__Male_Fetal_15wk_Patient30_94.412.1.1	Somatic.Tissue	Somatic.Tissue
+77	Somatic.Tissue___Lymph.Node_Adult__Patient2_Female_100.30.1.2	Somatic.Tissue__Lymph.Node__Female_Adult__Patient2_100.30.1.1	Somatic.Tissue	Somatic.Tissue
+78	Somatic.Tissue___Lymph.Node_Adult__Patient1_Male_100.29.1.1	Somatic.Tissue__Lymph.Node__Male_Adult__Patient1_100.29.1.3	Somatic.Tissue	Somatic.Tissue
+79	Somatic.Tissue___Skeletal.muscle_Adult__Patient2_Female_97.30.1.2	Somatic.Tissue__Skeletal.Muscle__Female_Adult__Patient2_97.30.1.1	Somatic.Tissue	Somatic.Tissue
+80	Somatic.Tissue___Skeletal.muscle_Adult__Patient1_Male_97.29.1.1	Somatic.Tissue__Skeletal.Muscle__Male_Adult__Patient1_97.29.1.7	Somatic.Tissue	Somatic.Tissue
+81	Somatic.Tissue___Stomach_Fetal_14wk_Patient26_Female_101.407.1.1	Somatic.Tissue__Stomach__Female_Fetal_14wk_Patient26_101.407.1.2	Somatic.Tissue	Somatic.Tissue
+82	Somatic.Tissue___Stomach_Fetal_14wk_Patient32_Female_101.414.1.2	Somatic.Tissue__Stomach__Female_Fetal_14wk_Patient32_101.414.1.1	Somatic.Tissue	Somatic.Tissue
+83	Somatic.Tissue___Stomach_Adult__Patient1_Male_101.29.1.1	Somatic.Tissue__Stomach__Male_Adult__Patient1_101.29.1.5	Somatic.Tissue	Somatic.Tissue
+84	Somatic.Tissue___Stomach_Fetal_15wk_Patient30_Male_101.412.1.2	Somatic.Tissue__Stomach__Male_Fetal_15wk_Patient30_101.412.1.1	Somatic.Tissue	Somatic.Tissue
+85	Somatic.Tissue___Tongue_Fetal_14wk_Patient26_Female_139.407.1.1	Somatic.Tissue__Tongue__Female_Fetal_14wk_Patient26_139.407.1.2	Somatic.Tissue	Somatic.Tissue
+86	Somatic.Tissue___Ureter_Adult__Patient2_Female_92.30.1.2	Somatic.Tissue__Ureter__Female_Adult__Patient2_92.30.1.1	Somatic.Tissue	Somatic.Tissue
+87	Somatic.Tissue___Ureter_Adult__Patient1_Male_92.29.1.1	Somatic.Tissue__Ureter__Male_Adult__Patient1_92.29.1.2	Somatic.Tissue	Somatic.Tissue
