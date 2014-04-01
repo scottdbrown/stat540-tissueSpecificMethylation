@@ -1,5 +1,6 @@
 # =====================================
-# RNA-Seq Preprocessed Code (Nathaniel)
+# RNA-Array Preprocessed Code (Nathaniel)
+# 31st March 2014
 # =====================================
 
 # Session Cleanup
@@ -11,8 +12,7 @@
 load('HT12v3_expression.RData')
 
 # Obtaining Illumina HT12v3 Annotation from File
-Illumina.HUGO <- dget('IlluminaHTMappingTable.HUGO')
-rownames(Illumina.HUGO) <- Illumina.HUGO$ID
+load('IlluminaHTMappingTable.HUGO')
 
 # Obtaining Illumina Mappings for Illumina HT12v3 Platform (HUGO SYMBOL)
 annot.expDat <- data.frame(expDat, HUGO = Illumina.HUGO[rownames(expDat),]$HUGO)
