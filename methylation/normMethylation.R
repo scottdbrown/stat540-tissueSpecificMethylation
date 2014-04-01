@@ -74,12 +74,9 @@ MVioPlot <- lapply(MNorm, function(data){
 	ggplot(tmp, aes(sample, exp)) + 
 		geom_violin(stat = "ydensity", position = position_dodge(0.5), 
 	  	          fill = "cadetblue3") +
-		stat_summary(fun.y = "median", geom='point') +
 		ylab("M Value") +
 		theme(axis.text.x  = element_text(angle=90))
 })
-MVioPlot <- Map(addTitle, MVioPlot, dataAlias, 
-                "Distribution of M values (alias)")
 showMultiPlot(MVioPlot)
 
 # Save M value plot
