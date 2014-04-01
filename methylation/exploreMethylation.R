@@ -7,13 +7,6 @@
 # Set working directories
 setwd("~/workspace/stat540.proj/methylation")
 
-# Load libraries
-library(RColorBrewer)
-library(gplots)
-library(hexbin)
-library(lattice)
-library(reshape2)
-
 # Read in data
 load("450kMethylationData_probeLevel_clean.RData")
 load("450kMethylationData_geneLevelAverage_clean.RData")
@@ -30,9 +23,6 @@ names(dataAlias) <- datasets
 
 # Load helper functions
 source("helpers.R")
-
-# Load color scheme
-rdBu <- colorRampPalette(brewer.pal(n = 11, "RdBu"))
 
 #-------------------------------
 # Workspace

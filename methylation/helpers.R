@@ -1,7 +1,18 @@
 #-------------------------------------------------------------------------------
 # Some repeatedly used functions
-# Saved separately for easier reference
+# Some often used libraries
+# Saved here separately for easier reference
 #-------------------------------------------------------------------------------
+# Load libraries
+library(RColorBrewer)
+library(reshape2)
+library(gplots)
+library(hexbin)
+library(lattice)
+
+# Load color scheme
+rdBu <- colorRampPalette(brewer.pal(n = 11, "RdBu"))
+
 # Get datasets specified in names vector
 getData <- function(names) {
 	getDataByName <- function(name) {
