@@ -1,6 +1,6 @@
 # ===================================================
 # Illumina HT12v3 GEO-querying Subroutine (Nathaniel)
-# 31st March 2014
+# 1st April 2014
 # ===================================================
 
 # Loading Library
@@ -13,10 +13,17 @@ library(GEOquery)
 # Obtaining Illumina HT12v3 Annotation from File
 Illumina.GEO <- getGEO(filename = 'GPL6947.soft')
 
-# Annotation Dataframe Restructuring (for HUGO SYMBOLs only)
+# Extracting DataTable
 Illumina.GEO.TRIM <- Illumina.GEO@dataTable@table
+
+# Annotation Dataframe Restructuring (for HUGO SYMBOLs only)
 Illumina.HUGO <- data.frame(ID = Illumina.GEO.TRIM$ID, HUGO = Illumina.GEO.TRIM$ILMN_Gene)
 rownames(Illumina.HUGO) <- Illumina.HUGO$ID
 
+# Annotation Dataframe Restructuring (for HUGO + ILMN_Trascript ID only) *Experimental*
+Illumina.EXPR <- data.frame(ID = Illumina.GEO.TRIM$ID, HUGO = Illumina.GEO.TRIM$ILMN_Gene, TranscriptID = Illumina.GEO.TRIM$Transcript)
+rownames(Illumina.EXPR) <- Illumina.EXPR$ID
+
 # RData Repacking
 save(Illumina.HUGO, file = 'IlluminaHTMappingTable.HUGO')
+save(Illumina.EXPR, file = 'IlluminaHTMappingTable.EXPR')
