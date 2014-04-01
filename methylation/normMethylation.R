@@ -71,7 +71,7 @@ MVioPlot <- lapply(MNorm, function(data){
 	tmp <- melt(data)
 	colnames(tmp) <- c("gene", "sample", "exp")
 	
-	ggplot(a, aes(sample, exp)) + 
+	ggplot(tmp, aes(sample, exp)) + 
 		geom_violin(stat = "ydensity", position = position_dodge(0.5), 
 	  	          fill = "cadetblue3") +
 		stat_summary(fun.y = "median", geom='point') +
