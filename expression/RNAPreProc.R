@@ -1,6 +1,7 @@
 # =====================================
 # RNA-Array Preprocessed Code (Nathaniel)
 # 31st March 2014
+# Last edit: Scott Brown - March 31, 2014
 # =====================================
 
 # Session Cleanup
@@ -15,4 +16,8 @@ load('HT12v3_expression.RData')
 load('IlluminaHTMappingTable.HUGO')
 
 # Obtaining Illumina Mappings for Illumina HT12v3 Platform (HUGO SYMBOL)
-annot.expDat <- data.frame(expDat, HUGO = Illumina.HUGO[rownames(expDat),]$HUGO)
+annot.expDat <- data.frame(HUGO = Illumina.HUGO[rownames(expDat),]$HUGO, expDat)
+
+# Get average expression of each gene (collapse data to one value per gene)
+avgExpByGene <- apply(annot.expDat[,-1],2,by, annot.expDat$HUGO, mean, na.rm=T)
+save(avgExpByGene, expMeta, file="HT12v3_avgExpressionByGene.RData")
