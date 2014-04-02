@@ -9,7 +9,7 @@ setwd(workingDir)
 
 ## Expression:
 
-load("/expression/HT12v3_avgExpressionByGene.RData")
+load("expression/HT12v3_avgExpressionByGene.RData")
 
 #Read in metadata title IDs
 IDs <- read.table("IDs.tsv", header=T, sep="\t")
@@ -20,6 +20,7 @@ expMeta <- merge(expMeta, IDs[,c("gsatid","HT12v3_ID")], by.x="title", by.y="HT1
 
 expGSM_gsatid <- expMeta[order(expMeta$gsatid),c("geo_accession","gsatid")]
 rownames(expGSM_gsatid) <- expGSM_gsatid$geo_accession
+expGSM_gsatid$gsatid <- paste0("g",expGSM_gsatid$gsatid)
 write.table(expGSM_gsatid, "expression/expGSM_gsatid.tsv", sep="\t")
 
 
@@ -35,4 +36,5 @@ methylMeta <- merge(methylMeta, IDs[,c("gsatid","X450k_ID")], by.x="title", by.y
 
 methylGSM_gsatid <- methylMeta[order(methylMeta$gsatid),c("geo_accession","gsatid")]
 rownames(methylGSM_gsatid) <- methylGSM_gsatid$geo_accession
+methylGSM_gsatid$gsatid <- paste0("g",methylGSM_gsatid$gsatid)
 write.table(methylGSM_gsatid, "methylation/methylGSM_gsatid.tsv", sep="\t")
