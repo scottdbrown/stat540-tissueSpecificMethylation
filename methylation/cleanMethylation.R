@@ -184,6 +184,13 @@ new <- sapply(as.character(methylMetaClean$cellType), swapName,
 new <- unname(new)
 methylMetaClean <- cbind(methylMetaClean, cellTypeShort = new)
 
+# Before we go on, pool somatic lines and stem cells together in meta data
+type <- melt(list(stem = grep("stem", methylMetaClean$cellType), 
+     							somatic = grep("Somatic", methylMetaClean$cellType)),
+						value.name = "row",
+						variable.name = "type")
+type <- type[order(type$row), colnames(type) != "row"]
+methylMetaClean <- cbind(methylMetaClean, cellTypeSimple = type)
 
 # Save reshaped table
 save(methylMetaClean, 
