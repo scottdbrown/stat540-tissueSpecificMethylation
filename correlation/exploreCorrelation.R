@@ -3,7 +3,7 @@
 #### Author(s): Scott Brown
 #### Date Created: March 31, 2014
 #### Last Edited by: Scott Brown
-#### on: March 31, 2014
+#### on: April 2, 2014
 ####################################################
 
 # edit project root folder if needed:
@@ -34,7 +34,7 @@ avgExpByGeneClean.shared <- avgExpByGeneClean[shared_genes,samples]
 avgMethylByGenePromoterClean.shared <- avgMethylByGenePromoterClean[shared_genes,samples]
 
 # get correlation (genome wide) for each sample between methylation values and expression values.
-cor(log(avgExpByGeneClean.shared[,3]), avgMethylByGenePromoterClean.shared[,3], use="complete.obs")
+# cor(log(avgExpByGeneClean.shared[,3]), avgMethylByGenePromoterClean.shared[,3], use="complete.obs")
 
 genome.cor <- sapply(samples, function(x){
   cor(log(avgExpByGeneClean.shared[,x]), avgMethylByGenePromoterClean.shared[,x], use="complete.obs")
@@ -61,4 +61,8 @@ t.test(cordat$cor~cordat$group2)
 ggplot(cordat, aes(gsatid, cor, color=group2)) + geom_point(stat="identity", size=3)
 
 ggplot(cordat, aes(gsatid, cor, color=group)) + geom_point(stat="identity", size=3)
+
+## TODO:
+## - same analysis for differentially expressed genes.
+## - xyplot showing what the data looks like for some samples (genomewide and differential ones)
 
