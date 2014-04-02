@@ -73,7 +73,7 @@ saveMultiPlot <- function(plots, aliases, fileName, ...) {
 # EXPLORE HELPERS
 #-------------------------------
 # Get beta values
-getBeta <- function(data, meta) {
+getBetaAvg <- function(data, meta) {
 	dens <- sapply(levels(meta$cellTypeShort), 
               	 function(type){
                	 rowMeans(data[ , 
@@ -136,4 +136,10 @@ examOutL <- function(frame, outL, nonOutL, ...) {
 	return(plotHex(frame[ , cols], ...))
 }
 
-
+# Rename dataset and assign it at global scope
+castGlobal <- function(datasets, oldVar, newVar){
+	names(datasets) <- gsub(oldVar, newVar, names(datasets))
+	Map(function(data, name){
+		assign(name, data, .GlobalEnv)
+	}, datasets, names(datasets))
+}

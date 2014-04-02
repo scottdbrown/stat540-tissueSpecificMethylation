@@ -28,7 +28,7 @@ source("helpers.R")
 # Workspace
 #-------------------------------
 # Density of Beta values
-densDat <- lapply(getData(datasets), getBeta, meta = meta)
+densDat <- lapply(getData(datasets), getBetaAvg, meta = meta)
 densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, 
                    plot.points = FALSE, xlab = "Beta")
 densPlot <- Map(addTitle, densPlot, dataAlias,
@@ -100,10 +100,7 @@ nuke <- lapply(getData(datasets), function(data){
 lapply(nuke, dim)
 
 # New name for nuked sets
-names(nuke) <- gsub("Clean", "Nuke", datasets)
-nuke <- Map(function(data, name){
-					assign(name, data, .GlobalEnv)
-				}, nuke, names(nuke))
+nuke <- castGlobal(nuke, "Clean", "Nuke")
 datasetsNuke <- names(nuke)
 
 methylMetaNuke <-
@@ -132,7 +129,7 @@ hPlot <- Map(function(dat, alias){
              hDat, dataAlias) # With clustering
 
 # Beta density
-densDat <- lapply(getData(datasetsNuke), getBeta, meta = metaNuke)
+densDat <- lapply(getData(datasetsNuke), getBetaAvg, meta = metaNuke)
 densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, 
                    plot.points = FALSE, xlab = "Beta")
 densPlot <- Map(addTitle, densPlot, dataAlias,
@@ -147,7 +144,9 @@ saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.png",
 # Save no-outlier tables
 save(outL,
      file = "450kMethylationData_outlier.RData")
-save(methylMetaNuke, methylDatNuke, 
+save(methylDatNuke, 
+     file = "450kMethylationData_meta_nuke.RData")
+save(methylMetaNuke,  
      file = "450kMethylationData_probeLevel_nuke.RData")
 save(avgMethylByGeneNuke, 
      file = "450kMethylationData_geneLevelAverage_nuke.RData")
