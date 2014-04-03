@@ -16,6 +16,7 @@ library(ggplot2)
 load("450kMethylationData_probeLevel_clean.RData")
 load("450kMethylationData_geneLevelAverage_clean.RData")
 load("450kMethylationData_geneLevelPromoterAverage_clean.RData")
+load("450kMethylationData_meta_clean.RData")
 
 # Get me variable names
 names <- ls()

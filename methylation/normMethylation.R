@@ -15,6 +15,7 @@ library(ggplot2)
 load("450kMethylationData_probeLevel_nuke.RData")
 load("450kMethylationData_geneLevelAverage_nuke.RData")
 load("450kMethylationData_geneLevelPromoterAverage_nuke.RData")
+load("450kMethylationData_meta_nuke.RData")
 
 # Get me variable names
 names <- ls()
