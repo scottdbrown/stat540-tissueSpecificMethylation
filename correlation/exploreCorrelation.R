@@ -13,8 +13,8 @@ workingDir <- paste0(projRoot,"correlation")
 setwd(workingDir)
 
 # load methylation data
-#load("../methylation/450kMethylationData_geneLevelPromoterAverage_clean.RData")
-load("../methylation/450kMethylationData_geneLevelAverage_clean.RData")
+load("../methylation/450kMethylationData_geneLevelPromoterAverage_clean.RData")
+#load("../methylation/450kMethylationData_geneLevelAverage_clean.RData")
 
 # load expression data
 #load("../expression/HT12v3_avgExpressionByGene.RData")
@@ -78,8 +78,8 @@ summary(lm(cor~group, data=cordat))
 
 
 topExp <- read.table("../expression/expTypeTable.tsv", header=T, sep=" ")
-#load("../methylation/450kMethylationData_geneLevelPromoterAverage_hit_clean.RData")
-load("../methylation/450kMethylationData_geneLevelAverage_hit_clean.RData")
+load("../methylation/450kMethylationData_geneLevelPromoterAverage_hit_clean.RData")
+#load("../methylation/450kMethylationData_geneLevelAverage_hit_clean.RData")
 topMethyl <- avgMethylByGeneCleanHit
 
 #length(diff_shared <- intersect(rownames(topExp[1:1000,]), rownames(topMethyl[1:1000,])))
@@ -111,11 +111,23 @@ t.test(cordat$cor~cordat$group2)
 ggplot(cordat, aes(gsatid, topcor, color=group2)) + geom_point(stat="identity", size=3)
 
 
-ggplot(cordat, aes(group2, topcor)) + geom_boxplot(width=.2) + geom_jitter() + ylim(-.4,0) + geom_hline(aes(yintercept=0))
-ggplot(cordat, aes(group2, cor)) + geom_boxplot(width=.2) + geom_jitter() + ylim(-.4,0) + geom_hline(aes(yintercept=0))
+ggplot(cordat, aes(group2, topcor)) + geom_boxplot(width=.2) + geom_jitter() + ylim(-.35,-.05) #+ geom_hline(aes(yintercept=0))
+ggplot(cordat, aes(group2, cor)) + geom_boxplot(width=.2) + geom_jitter() + ylim(-.35,-.05) #+ geom_hline(aes(yintercept=0))
 
 
 ggplot(cordat, aes(gsatid, cor, color=group)) + geom_point(stat="identity", size=3)
 
 
 summary(lm(cor~group, data=cordat))
+
+allcordat <- data.frame(cor=c(cordat$cor,cordat$topcor), cell=rep(cordat$group2, 2), group=c(rep("All",nrow(cordat)),rep("Differential",nrow(cordat))))
+ggplot(allcordat, aes(cell, cor)) + geom_boxplot(width=.2) + geom_jitter() + facet_wrap(~group)
+
+
+## trying to get contrasts to test differences i am interested in.
+#contrasts:
+#c(1,-1,0,0)
+#c(0,0,1,-1)
+#c(1,0,-1,0)
+#c(0,1,0,-1)
+summary(lm(cor~0+cell+group+cell*group, data=allcordat))
