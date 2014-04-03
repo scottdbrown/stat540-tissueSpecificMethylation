@@ -96,22 +96,34 @@ save(avgMethylByGenePromoterCleanHit,
 # Plotting work
 #-------------------------------
 # Visualize top 100 hits in heatmap
-top100 <- lapply(hit, function(x){head(x, n = 100)})
+howMany <- 1000
+topForHeat <- lapply(hit, function(x){head(x, n = howMany)})
 hitBeta <- Map(function(top, beta){
 	subset(beta, rownames(beta) %in% rownames(top))
-}, top100, getData(betasets))
+}, topForHeat, getData(betasets))
 
 getHeatmap <- function(data, meta) {
-	dev.new()
-	col <- c("darkgoldenrod1", "forestgreen")
-	heatmap.2(data, col = rdBu, ColSideColors = col[meta$cellTypeSimple], density.info = "none", 
-	    trace = "none", Rowv = TRUE, Colv = TRUE, labCol = FALSE, 
-	    dendrogram = "row", margins = c(1, 15))
+	col <- c("lightgoldenrod", "lightseagreen")
+	heatmap.2(data, col = rdBu, ColSideColors = col[meta$cellTypeSimple], 
+	          density.info = "none", trace = "none", 
+	          Rowv = TRUE, Colv = TRUE, labCol = FALSE, labRow = FALSE, 
+	    			dendrogram = "col", margins = c(1, 15), keysize = 0.7)
 	legend("topright", c("stem cell", "somatic cell"), 
-	       col = c("darkgoldenrod1", "forestgreen"), 
-	    	 pch = 15)	
+	       col = col, pch = 15)	
 }
-lapply(hitBeta, getHeatmap, meta)
+lapply(hitBeta, function(data, meta) {
+	dev.new()
+	getHeatmap(data, meta)
+}, meta)
+
+# Save heatmap
+Map(function(beta, name) {
+	pdf(paste("top", howMany, name, "heatmap-clean.pdf", sep = "-"),
+	    width = 10, height = 10)
+	getHeatmap(beta, meta)
+	dev.off()
+}, hitBeta, dataAlias)
+
 
 # Visualize as Stripplot
 top5 <- lapply(hit, function(x){head(x, n = 5)})
