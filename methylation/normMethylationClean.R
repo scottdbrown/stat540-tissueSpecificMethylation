@@ -1,8 +1,9 @@
 #-------------------------------------------------------------------------------
 # Normalize methylation data
+# With outliers included
 # Jessica Lee
-# Date created: March 30, 2014
-# Last edit: April 2, 2014
+# Date created: April 2, 2014
+# Last edit: April 3, 2014
 #-------------------------------------------------------------------------------
 # Set working directories
 setwd("~/workspace/stat540.proj/methylation")
@@ -12,9 +13,9 @@ library(wateRmelon)
 library(ggplot2)
 
 # Read in data
-load("450kMethylationData_probeLevel_nuke.RData")
-load("450kMethylationData_geneLevelAverage_nuke.RData")
-load("450kMethylationData_geneLevelPromoterAverage_nuke.RData")
+load("450kMethylationData_probeLevel_clean.RData")
+load("450kMethylationData_geneLevelAverage_clean.RData")
+load("450kMethylationData_geneLevelPromoterAverage_clean.RData")
 
 # Get me variable names
 names <- ls()
@@ -41,16 +42,16 @@ betaNorm <- lapply(getData(datasets), function(data){
 MNorm <- lapply(betaNorm, beta2m)
 
 # Assign normalized data globally
-betaNorm <- castGlobal(betaNorm, "Nuke", "BetaNorm")
-MNorm <- castGlobal(MNorm, "Nuke", "Norm")
+betaNorm <- castGlobal(betaNorm, "Clean", "CleanBetaNorm")
+MNorm <- castGlobal(MNorm, "Clean", "CleanNorm")
 
 # Save M values for differential methylation analysis
-save(methylDatNorm, methylDatBetaNorm,
-     file = "450kMethylationData_probeLevel_norm.RData")
-save(avgMethylByGeneNorm, avgMethylByGeneBetaNorm, 
-     file = "450kMethylationData_geneLevelAverage_norm.RData")
-save(avgMethylByGenePromoterNorm, avgMethylByGenePromoterBetaNorm,
-     file = "450kMethylationData_geneLevelPromoterAverage_norm.RData")
+save(methylDatCleanNorm, methylDatCleanBetaNorm,
+     file = "450kMethylationData_probeLevel_clean_norm.RData")
+save(avgMethylByGeneCleanNorm, avgMethylByGeneCleanBetaNorm, 
+     file = "450kMethylationData_geneLevelAverage_clean_norm.RData")
+save(avgMethylByGenePromoterCleanNorm, avgMethylByGenePromoterCleanBetaNorm,
+     file = "450kMethylationData_geneLevelPromoterAverage_clean_norm.RData")
 
 #-------------------------------
 # Plotting work
@@ -78,6 +79,6 @@ densPlot <- Map(addTitle, densPlot, dataAlias,
 showMultiPlot(densPlot)
 
 # Save beta density plot
-saveMultiPlot(densPlot, dataAlias, "beta-density-alias-both-norm.png", 
+saveMultiPlot(densPlot, dataAlias, "beta-density-alias-both-norm-clean.png", 
     					width = 1000, height = 1000)
 
