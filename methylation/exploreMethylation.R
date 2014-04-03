@@ -27,6 +27,39 @@ source("helpers.R")
 #-------------------------------
 # Workspace
 #-------------------------------
+# Remove outliers
+outL <- c("GSM867986", "GSM867947", "GSM867948", "GSM867949")
+nuke <- lapply(getData(datasets), function(data){
+                data[ , !(colnames(data) %in% outL)]
+              })
+lapply(nuke, dim)
+
+# New name for nuked sets
+nuke <- castGlobal(nuke, "Clean", "Nuke")
+datasetsNuke <- names(nuke)
+
+methylMetaNuke <-
+  methylMetaClean[!(methylMetaClean$geo %in% outL), ]
+dim(methylMetaNuke)
+metaNuke <- methylMetaNuke
+
+
+# Save no-outlier tables
+save(outL,
+     file = "450kMethylationData_outlier.RData")
+save(methylMetaNuke, 
+     file = "450kMethylationData_meta_nuke.RData")
+save(methylDatNuke,  
+     file = "450kMethylationData_probeLevel_nuke.RData")
+save(avgMethylByGeneNuke, 
+     file = "450kMethylationData_geneLevelAverage_nuke.RData")
+save(avgMethylByGenePromoterNuke,
+     file = "450kMethylationData_geneLevelPromoterAverage_nuke.RData")
+
+
+#-------------------------------
+# Plotting work
+#-------------------------------
 # Density of Beta values
 densDat <- lapply(getData(datasets), getBetaAvg, meta = meta)
 densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, 
@@ -91,23 +124,6 @@ showMultiPlot(ESOutLPlot)
 saveMultiPlot(ESOutLPlot, dataAlias, "outlier-es-alias.png", 
     					width = 1000, height = 1000)
 
-
-# Remove outliers
-outL <- c("GSM867986", "GSM867947", "GSM867948", "GSM867949")
-nuke <- lapply(getData(datasets), function(data){
-								data[ , !(colnames(data) %in% outL)]
-							})
-lapply(nuke, dim)
-
-# New name for nuked sets
-nuke <- castGlobal(nuke, "Clean", "Nuke")
-datasetsNuke <- names(nuke)
-
-methylMetaNuke <-
-	methylMetaClean[!(methylMetaClean$geo %in% outL), ]
-dim(methylMetaNuke)
-metaNuke <- methylMetaNuke
-
 # What does it look like after outliers removed
 # Heatmap
 hDat <- lapply(getData(datasetsNuke), getHeatMat, meta = metaNuke)
@@ -139,18 +155,5 @@ showMultiPlot(densPlot)
 # Save beta density plot
 saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.png", 
     					width = 1000, height = 1000)
-
-
-# Save no-outlier tables
-save(outL,
-     file = "450kMethylationData_outlier.RData")
-save(methylMetaNuke, 
-     file = "450kMethylationData_meta_nuke.RData")
-save(methylDatNuke,  
-     file = "450kMethylationData_probeLevel_nuke.RData")
-save(avgMethylByGeneNuke, 
-     file = "450kMethylationData_geneLevelAverage_nuke.RData")
-save(avgMethylByGenePromoterNuke,
-     file = "450kMethylationData_geneLevelPromoterAverage_nuke.RData")
 
 
