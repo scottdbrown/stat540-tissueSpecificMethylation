@@ -70,10 +70,10 @@ densPlot <- Map(addTitle, densPlot, dataAlias,
 showMultiPlot(densPlot)
 
 # Save beta density plot
-saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm.png", 
-    					width = 1000, height = 1000)
+saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm.pdf", 
+    					width = 10, height = 10)
 
-# Gene-level pearson correlation
+# Pearson correlation
 hDat <- lapply(getData(datasets), getHeatMat, meta = meta)
 hPlot <- lapply(hDat, function(dat, ...){dev.new(); plotCor(dat, ...)}, 
                 Rowv = NA, Colv = NA, margin = c(5, 15), 
@@ -86,8 +86,8 @@ hPlot <- lapply(hDat, function(dat, ...){dev.new(); plotCor(dat, ...)},
 
 # Save Pearson correlation plot
 hPlot <- Map(function(dat, alias){
-							png(gsub("alias", alias, "cor-alias-before-norm.png"),
-							    width = 1000, height = 1000)
+							pdf(gsub("alias", alias, "cor-alias-before-norm.pdf"),
+							    width = 10, height = 10)
 							plotCor(dat, margin = c(c(5, 15)), labCol = methylMetaClean$geo)
 							dev.off()
 						 }, 
@@ -108,8 +108,8 @@ iPSOutLPlot <- Map(addTitle, iPSOutLPlot, dataAlias,
 showMultiPlot(iPSOutLPlot)
 
 # Save plot
-saveMultiPlot(iPSOutLPlot, dataAlias, "outlier-ips-alias.png", 
-    					width = 1000, height = 1000)
+saveMultiPlot(iPSOutLPlot, dataAlias, "outlier-ips-alias.pdf", 
+    					width = 10, height = 10)
 
 # ES outliers
 outL <- c("GSM867947", "GSM867948", "GSM867949")
@@ -122,8 +122,8 @@ ESOutLPlot <- Map(addTitle, ESOutLPlot, dataAlias,
 showMultiPlot(ESOutLPlot)
 
 # Save plot
-saveMultiPlot(ESOutLPlot, dataAlias, "outlier-es-alias.png", 
-    					width = 1000, height = 1000)
+saveMultiPlot(ESOutLPlot, dataAlias, "outlier-es-alias.pdf", 
+    					width = 10, height = 10)
 
 # What does it look like after outliers removed
 # Heatmap
@@ -138,8 +138,8 @@ hPlot <- lapply(hDat, function(dat, ...){dev.new(); plotCor(dat, ...)},
 # Save Pearson correlation plot
 hDat <- lapply(getData(datasetsNuke), getHeatMat, meta = metaNuke)
 hPlot <- Map(function(dat, alias){
-							png(gsub("alias", alias, "cor-alias-before-norm-no-out.png"),
-							    width = 1000, height = 1000)
+							pdf(gsub("alias", alias, "cor-alias-before-norm-no-out.pdf"),
+							    width = 10, height = 10)
 							plotCor(dat, margin = c(c(5, 15)), labCol = methylMetaClean$geo)
 							dev.off()
 						 }, 
@@ -154,7 +154,7 @@ densPlot <- Map(addTitle, densPlot, dataAlias,
 showMultiPlot(densPlot)
 
 # Save beta density plot
-saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.png", 
-    					width = 1000, height = 1000)
+saveMultiPlot(densPlot, dataAlias, "beta-density-alias-before-norm-no-out.pdf", 
+    					width = 10, height = 10)
 
 

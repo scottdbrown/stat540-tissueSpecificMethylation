@@ -55,9 +55,9 @@ showMultiHeatmap <- function(data, ...) {
 	lapply(data, show)
 }
 
-# Save a given plot to png format
+# Save a given plot to pdf format
 savePlot <- function(plot, ...) {
-	png(...)
+	pdf(...)
 	plot(plot)
 	dev.off()
 }

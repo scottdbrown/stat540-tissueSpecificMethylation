@@ -59,11 +59,12 @@ save(avgMethylByGenePromoterCleanNorm, avgMethylByGenePromoterCleanBetaNorm,
 #-------------------------------
 # Plot Beta Density
 densDat <- lapply(betaNorm, getBetaAvg, meta = meta)
-densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, plot.points = FALSE, xlab = "Beta Value")
+densPlot <- lapply(densDat, plotDensity, auto.key = TRUE, plot.points = FALSE, 
+                   xlab = "Beta Value")
 densPlot <- Map(addTitle, densPlot, dataAlias,
     						"Density of Beta Values by Cell Type (alias)")
 showMultiPlot(densPlot)
-saveMultiPlot(densPlot, dataAlias, "beta-density-alias-after-norm.png", 
+saveMultiPlot(densPlot, dataAlias, "beta-density-alias-after-norm.pdf", 
     					width = 1000, height = 1000)
 
 # Both before and after
@@ -80,6 +81,6 @@ densPlot <- Map(addTitle, densPlot, dataAlias,
 showMultiPlot(densPlot)
 
 # Save beta density plot
-saveMultiPlot(densPlot, dataAlias, "beta-density-alias-both-norm-clean.png", 
-    					width = 1000, height = 1000)
+saveMultiPlot(densPlot, dataAlias, "beta-density-alias-both-norm-clean.pdf", 
+    					width = 10, height = 8)
 
