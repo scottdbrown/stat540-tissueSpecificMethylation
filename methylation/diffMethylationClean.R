@@ -75,12 +75,6 @@ desMat <- model.matrix(~ cellTypeSimple, meta)
 hit <- lapply(getData(newData), fitAndHit, design = desMat, 
              coefName = "cellType", n = Inf)
 
-# Get top 100 hits
-top100 <- lapply(hit, function(x){head(x, n = 100)})
-hitBeta <- Map(function(top, beta){
-	subset(beta, rownames(beta) %in% rownames(top))
-}, top100, getData(betasets))
-
 # One shot method to test various models
 hit <- fitAndHitAll(getData(newData), 
                     ~ cellTypeSimple, meta,
@@ -102,6 +96,11 @@ save(avgMethylByGenePromoterCleanHit,
 # Plotting work
 #-------------------------------
 # Visualize top 100 hits in heatmap
+top100 <- lapply(hit, function(x){head(x, n = 100)})
+hitBeta <- Map(function(top, beta){
+	subset(beta, rownames(beta) %in% rownames(top))
+}, top100, getData(betasets))
+
 getHeatmap <- function(data, meta) {
 	dev.new()
 	col <- c("darkgoldenrod1", "forestgreen")
