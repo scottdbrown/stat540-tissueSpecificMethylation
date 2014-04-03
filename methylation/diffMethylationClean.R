@@ -1,7 +1,8 @@
 #-------------------------------------------------------------------------------
 # Differential methylation analysis
+# With outliers included
 # Jessica Lee
-# Date created: April 1, 2014
+# Date created: April 2, 2014
 # Last edit: April 3, 2014
 #-------------------------------------------------------------------------------
 # Set working directories
@@ -12,10 +13,10 @@ library(wateRmelon)
 library(limma)
 
 # Read in data
-load("450kMethylationData_probeLevel_norm.RData")
-load("450kMethylationData_geneLevelAverage_norm.RData")
-load("450kMethylationData_geneLevelPromoterAverage_norm.RData")
-load("450kMethylationData_meta_nuke.RData")
+load("450kMethylationData_probeLevel_clean_norm.RData")
+load("450kMethylationData_geneLevelAverage_clean_norm.RData")
+load("450kMethylationData_geneLevelPromoterAverage_clean_norm.RData")
+load("450kMethylationData_meta_clean.RData")
 
 # Get me variable names
 names <- ls()
@@ -54,16 +55,16 @@ fitAndHitAll <- function(data, formula, meta, coefName, ...) {
 # Limma throws an error for some probes that have 
 # normalized values of -Inf or Inf
 # Nuke probes that have -Inf or Inf
-nonInfRows <- apply(methylDatNorm, 1, function(row){ 
+nonInfRows <- apply(methylDatCleanNorm, 1, function(row){ 
 	all((row != -Inf) & (row != Inf)) 
 })
 length(which(nonInfRows == FALSE))
-methylDatRmInf <- methylDatNorm[nonInfRows, ]
-dim(methylDatRmInf)
-dim(methylDatNorm)
+methylDatCleanRmInf <- methylDatCleanNorm[nonInfRows, ]
+dim(methylDatCleanRmInf)
+dim(methylDatCleanNorm)
 
 # Save RmInf as new data so we can lapply in next step
-newData <- gsub("methylDatNorm", "methylDatRmInf", datasets)
+newData <- gsub("methylDatCleanNorm", "methylDatCleanRmInf", datasets)
 
 # Differential methylation analysis with limma
 # Get design matrix
@@ -89,12 +90,12 @@ hit <- fitAndHitAll(getData(newData),
 hit <- castGlobal(hit, "Norm|RmInf", "Hit")
 
 # Save data frame
-save(methylDatHit,
-     file = "450kMethylationData_probeLevel_hit.RData")
-save(avgMethylByGeneHit,
-     file = "450kMethylationData_geneLevelAverage_hit.RData")
-save(avgMethylByGenePromoterHit,
-     file = "450kMethylationData_geneLevelPromoterAverage_hit.RData")
+save(methylDatCleanHit,
+     file = "450kMethylationData_probeLevel_hit_clean.RData")
+save(avgMethylByGeneCleanHit,
+     file = "450kMethylationData_geneLevelAverage_hit_clean.RData")
+save(avgMethylByGenePromoterCleanHit,
+     file = "450kMethylationData_geneLevelPromoterAverage_hit_clean.RData")
 
 
 #-------------------------------
