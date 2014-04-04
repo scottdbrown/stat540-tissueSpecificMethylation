@@ -2,8 +2,8 @@
 #### Explore Expression/Methylation Correlation ####
 #### Author(s): Scott Brown
 #### Date Created: March 31, 2014
-#### Last Edited by: Scott Brown
-#### on: April 2, 2014
+#### Last Edited by: Nat
+#### on: April 4, 2014
 ####################################################
 
 library(ggplot2)
@@ -117,6 +117,22 @@ pdf("../plots/correlations_by_cell_group_CpG2.pdf", width=10, height=8)
 ggplot(allcordat, aes(cell, cor, fill=cell)) + geom_boxplot(width=.2) + facet_wrap(methyl~group) +
   theme(panel.background=element_rect(fill="white"))
 dev.off()
+
+# Venn Diagram Code (Nat)
+
+# Plotting Venn Diagram to compare (raw) expressed vs methylation
+library(VennDiagram)
+venn.combine <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
+plot.new()
+venn.plot <- venn.diagram(venn.combine, filename = NULL, fill = c('red', 'blue'))
+grid.draw(venn.plot)
+
+# Plotting Venn Diagram to compare differentially expressed vs methylation
+library(VennDiagram)
+venn.combine <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
+plot.new()
+venn.plot <- venn.diagram(venn.combine, filename = NULL, fill = c('red', 'blue'))
+grid.draw(venn.plot)
 
 #TODO: Statistical analysis of result.
 
