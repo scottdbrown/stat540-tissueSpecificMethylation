@@ -26,6 +26,11 @@ methylPromoter <- avgMethylByGenePromoterClean
 methylGene <- avgMethylByGeneClean
 exp <- avgExpByGeneClean
 
+#testing m-values
+library(wateRmelon)
+methylPromoter <- beta2m(betaqn(avgMethylByGenePromoterClean))
+methylGene <- beta2m(betaqn(avgMethylByGeneClean))
+
 shared_genesG <- intersect(rownames(exp), rownames(methylGene))
 shared_genesP <- intersect(rownames(exp), rownames(methylPromoter))
 
@@ -119,6 +124,63 @@ ggplot(allcordat, aes(cell, cor, fill=cell)) + geom_boxplot(width=.2) + facet_wr
 dev.off()
 
 #TODO: Statistical analysis of result.
+
+with(subset(allcordat, group=="All" & methyl=="GeneAverage"),
+     t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
+
+with(subset(allcordat, group=="Differential" & methyl=="GeneAverage"),
+     t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
+
+with(subset(allcordat, group=="All" & methyl=="PromoterAverage"),
+     t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
+
+with(subset(allcordat, group=="Differential" & methyl=="PromoterAverage"),
+     t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
+
+#----------------
+
+with(subset(allcordat, methyl=="GeneAverage" & cell=="Somatic"),
+     t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
+
+with(subset(allcordat, methyl=="GeneAverage" & cell=="Stem"),
+     t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
+
+with(subset(allcordat, methyl=="PromoterAverage" & cell=="Somatic"),
+     t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
+
+with(subset(allcordat, methyl=="PromoterAverage" & cell=="Stem"),
+     t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
+
+#----------------
+
+with(subset(allcordat, group=="All" & cell=="Somatic"),
+     t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
+
+with(subset(allcordat, group=="All" & cell=="Stem"),
+     t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
+
+with(subset(allcordat, group=="Differential" & cell=="Somatic"),
+     t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
+
+with(subset(allcordat, group=="Differential" & cell=="Stem"),
+     t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
+
+
+
+# fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
+# summary(fit)
+# 
+# cont.matrix <- makeContrasts()
+# 
+# ###############
+# (desmat <- model.matrix(~cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat))
+# colnames(desmat)
+# 
+# cont.matrix <- makeContrasts(a=cellStem-Intercept,
+#                              b=cellStem:groupDifferential-groupDifferential,
+#                              c=methylPromoterAverage*cellStem-methylPromoterAverage,
+#                              d=methylPromoterAverage*cellStem*groupDifferential-methylPromoterAverage*groupDifferential,
+#                              levels=desmat)
 
 #ggplot(cordat, aes(group, cor)) + geom_violin(fill="lightblue") + 
 #  geom_boxplot(width=.1) + stat_summary(fun.y="mean", geom="point", color="#FF6600", size=3) + 
