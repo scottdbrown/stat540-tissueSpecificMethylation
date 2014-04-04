@@ -123,22 +123,6 @@ ggplot(allcordat, aes(cell, cor, fill=cell)) + geom_boxplot(width=.2) + facet_wr
   theme(panel.background=element_rect(fill="white"))
 dev.off()
 
-# Venn Diagram Code (Nat)
-
-# Plotting Venn Diagram to compare (raw) expressed vs methylation
-library(VennDiagram)
-venn.combine.1 <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
-plot.new()
-venn.plot.1 <- venn.diagram(venn.combine.1, filename = NULL, fill = c('red', 'blue', 'green'))
-grid.draw(venn.plot.1)
-
-# Plotting Venn Diagram to compare differentially expressed vs methylation
-library(VennDiagram)
-venn.combine.2 <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
-plot.new()
-venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
-grid.draw(venn.plot.2)
-
 #TODO: Statistical analysis of result.
 
 with(subset(allcordat, group=="All" & methyl=="GeneAverage"),
@@ -182,6 +166,21 @@ with(subset(allcordat, group=="Differential" & cell=="Stem"),
      t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
 
 
+# Venn Diagram Code (Nat)
+
+# Plotting Venn Diagram to compare (raw) expressed vs methylation
+library(VennDiagram)
+venn.combine.1 <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
+plot.new()
+venn.plot.1 <- venn.diagram(venn.combine.1, filename = NULL, fill = c('red', 'blue', 'green'))
+grid.draw(venn.plot.1)
+
+# Plotting Venn Diagram to compare differentially expressed vs methylation
+library(VennDiagram)
+venn.combine.2 <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
+plot.new()
+venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
+grid.draw(venn.plot.2)
 
 # fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
 # summary(fit)
