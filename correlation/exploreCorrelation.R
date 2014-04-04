@@ -122,17 +122,17 @@ dev.off()
 
 # Plotting Venn Diagram to compare (raw) expressed vs methylation
 library(VennDiagram)
-venn.combine <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
+venn.combine.1 <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
 plot.new()
-venn.plot <- venn.diagram(venn.combine, filename = NULL, fill = c('red', 'blue'))
-grid.draw(venn.plot)
+venn.plot.1 <- venn.diagram(venn.combine.1, filename = NULL, fill = c('red', 'blue', 'green'))
+grid.draw(venn.plot.1)
 
 # Plotting Venn Diagram to compare differentially expressed vs methylation
 library(VennDiagram)
-venn.combine <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
+venn.combine.2 <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
 plot.new()
-venn.plot <- venn.diagram(venn.combine, filename = NULL, fill = c('red', 'blue'))
-grid.draw(venn.plot)
+venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
+grid.draw(venn.plot.2)
 
 #TODO: Statistical analysis of result.
 
