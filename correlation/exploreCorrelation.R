@@ -13,8 +13,8 @@ workingDir <- paste0(projRoot,"correlation")
 setwd(workingDir)
 
 # load methylation data
-load("../methylation/450kMethylationData_geneLevelPromoterAverage_clean.RData")
-#load("../methylation/450kMethylationData_geneLevelAverage_clean.RData")
+#load("../methylation/450kMethylationData_geneLevelPromoterAverage_clean.RData")
+load("../methylation/450kMethylationData_geneLevelAverage_clean.RData")
 
 # load expression data
 #load("../expression/HT12v3_avgExpressionByGene.RData")
@@ -78,8 +78,8 @@ summary(lm(cor~group, data=cordat))
 
 
 topExp <- read.table("../expression/expTypeTable.tsv", header=T, sep=" ")
-load("../methylation/450kMethylationData_geneLevelPromoterAverage_hit_clean.RData")
-#load("../methylation/450kMethylationData_geneLevelAverage_hit_clean.RData")
+#load("../methylation/450kMethylationData_geneLevelPromoterAverage_hit_clean.RData")
+load("../methylation/450kMethylationData_geneLevelAverage_hit_clean.RData")
 topMethyl <- avgMethylByGeneCleanHit
 
 #length(diff_shared <- intersect(rownames(topExp[1:1000,]), rownames(topMethyl[1:1000,])))
@@ -130,4 +130,8 @@ ggplot(allcordat, aes(cell, cor)) + geom_boxplot(width=.2) + geom_jitter() + fac
 #c(0,0,1,-1)
 #c(1,0,-1,0)
 #c(0,1,0,-1)
-summary(lm(cor~0+cell+group+cell*group, data=allcordat))
+summary(lm(cor~cell+group, data=allcordat))
+
+
+t.test(allcordat$cor[allcordat$group=="All" & allcordat$cell=="Stem"],
+       allcordat$cor[allcordat$group=="Differential" & allcordat$cell=="Stem"])
