@@ -170,14 +170,17 @@ with(subset(allcordat, group=="Differential" & cell=="Stem"),
 
 # Plotting Venn Diagram to compare (raw) expressed vs methylation
 library(VennDiagram)
-venn.combine.1 <- list(promoter.methylation = methylPromoter, gene.methylation = methylGene, gene.expression = exp)
+venn.combine.1 <- list(promoter.methylation = rownames(methylPromoter), 
+                       gene.methylation = rownames(methylGene), 
+                       gene.expression = rownames(exp))
 plot.new()
 venn.plot.1 <- venn.diagram(venn.combine.1, filename = NULL, fill = c('red', 'blue', 'green'))
 grid.draw(venn.plot.1)
 
 # Plotting Venn Diagram to compare differentially expressed vs methylation
-library(VennDiagram)
-venn.combine.2 <- list(differential.promoter.methylation = topMethylP, differential.gene.methylation = topMethylG, differential.expression = topExp)
+venn.combine.2 <- list(differential.promoter.methylation = rownames(topMethylP[topMethylP$adj.P.Val<1e-5,]), 
+                       differential.gene.methylation = rownames(topMethylG[topMethylG$adj.P.Val<1e-5,]), 
+                       differential.expression = rownames(topExp[topExp$adj.P.Val<1e-5,]))
 plot.new()
 venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
 grid.draw(venn.plot.2)
