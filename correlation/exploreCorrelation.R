@@ -2,8 +2,8 @@
 #### Explore Expression/Methylation Correlation ####
 #### Author(s): Scott Brown
 #### Date Created: March 31, 2014
-#### Last Edited by: Nat
-#### on: April 4, 2014
+#### Last Edited by: Scott
+#### on: April 6, 2014
 ####################################################
 
 library(ggplot2)
@@ -170,20 +170,24 @@ with(subset(allcordat, group=="Differential" & cell=="Stem"),
 
 # Plotting Venn Diagram to compare (raw) expressed vs methylation
 library(VennDiagram)
-venn.combine.1 <- list(promoter.methylation = rownames(methylPromoter), 
-                       gene.methylation = rownames(methylGene), 
-                       gene.expression = rownames(exp))
+venn.combine.1 <- list(Promoter_methylation = rownames(methylPromoter), 
+                       Gene_methylation = rownames(methylGene), 
+                       Gene_expression = rownames(exp))
+pdf("../plots/gene_overlap_venn.pdf")
 plot.new()
 venn.plot.1 <- venn.diagram(venn.combine.1, filename = NULL, fill = c('red', 'blue', 'green'))
 grid.draw(venn.plot.1)
+dev.off()
 
 # Plotting Venn Diagram to compare differentially expressed vs methylation
-venn.combine.2 <- list(differential.promoter.methylation = rownames(topMethylP[topMethylP$adj.P.Val<1e-5,]), 
-                       differential.gene.methylation = rownames(topMethylG[topMethylG$adj.P.Val<1e-5,]), 
-                       differential.expression = rownames(topExp[topExp$adj.P.Val<1e-5,]))
+venn.combine.2 <- list(Differential_Promoter_methylation = rownames(topMethylP[topMethylP$adj.P.Val<1e-5,]), 
+                       Differential_Gene_methylation = rownames(topMethylG[topMethylG$adj.P.Val<1e-5,]), 
+                       Differential_expression = rownames(topExp[topExp$adj.P.Val<1e-5,]))
+pdf("../plots/differential_gene_overlap_venn.pdf")
 plot.new()
 venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
 grid.draw(venn.plot.2)
+dev.off()
 
 # fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
 # summary(fit)
