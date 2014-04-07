@@ -6,8 +6,8 @@ load('Analysis.RDAT')
 
 # Create subset Tables using FDR < 1e-5
 tinyTable <- topTableType[topTableType$adj.P.Val < 1e-5, ]
-tinyPromoter <- avgMethylByGenePromoterCleanHit[avgMethylByGenePromoterCleanHit$adj.P.Val<1e-5,]
-tinyGene <- avgMethylByGeneCleanHit[avgMethylByGeneCleanHit$adj.P.Val<1e-5,]
+tinyPromoter <- avgMethylByGenePromoterCleanHit[avgMethylByGenePromoterCleanHit$adj.P.Val < 1e-5,]
+tinyGene <- avgMethylByGeneCleanHit[avgMethylByGeneCleanHit$adj.P.Val < 1e-5,]
 
 # Differential Methylation
 # Union
@@ -28,3 +28,11 @@ write.table(all.methylation.intersect.expression, file = 'all.methylation.inters
 # Triple Intersect
 triple.intersect <- intersect(intersect(rownames(tinyGene), rownames(tinyPromoter)), rownames(tinyTable))
 write.table(triple.intersect, file = 'triple.intersect.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
+
+# Promoter Methylation Intersect Expression
+prom.intersect <- intersect(rownames(tinyPromoter), rownames(tinyTable))
+write.table(prom.intersect, file = 'promoter.intersect.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
+
+# Gene Methylation Intersect Expression
+gene.intersect <- intersect(rownames(tinyGene), rownames(tinyTable))
+write.table(gene.intersect, file = 'gene.intersect.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
