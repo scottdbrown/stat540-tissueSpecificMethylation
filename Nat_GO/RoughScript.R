@@ -10,8 +10,13 @@ tinyPromoter <- avgMethylByGenePromoterCleanHit[avgMethylByGenePromoterCleanHit$
 tinyGene <- avgMethylByGeneCleanHit[avgMethylByGeneCleanHit$adj.P.Val<1e-5,]
 
 # Differential Methylation
+# Union
 methylation.union <- union(rownames(tinyGene), rownames(tinyPromoter))
 write.table(methylation.union, file = 'methylation.all.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
+
+# Individual
+write.table(rownames(tinyGene), file = 'methylation.gene.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
+write.table(rownames(tinyPromoter), file = 'methylation.promoter.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
 
 triple.intersect <- intersect(intersect(rownames(tinyGene), rownames(tinyPromoter)), rownames(tinyTable))
 triple.intersect.table <- data.frame(ID = triple.intersect, gMethyl = tinyGene[triple.intersect,]$adj.P.Val, pMethyl = tinyPromoter[triple.intersect,]$adj.P.Val, gExp = tinyTable[triple.intersect,]$adj.P.Val)
