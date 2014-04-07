@@ -201,9 +201,11 @@ model.ExpDat3  <- model.matrix(~Type,expMetaClean)
 ExpFit3 <- lmFit(log.avgExpCleanNorm, model.ExpDat3)
 ExpEbFit3 <- eBayes(ExpFit3)
 topTableType  <- topTable(ExpEbFit3, number = Inf, coef = grep("Type", colnames(coef(ExpEbFit3))))
-write.table(topTableType, )
+write.table(topTableType, file = "expression/expTypeTable.tsv", col.names = T, row.names = T)
 
 #Make a heatmap of the top 100 genes.
-heatmap(as.matrix(log.avgExpCleanNorm[c(row.names(topTableType[1:100,])),]))
+heatmap(as.matrix(log.avgExpCleanNorm[c(row.names(topTableType[1:100,])),]),scale = "none", Rowv = NA, Colv = NA, main = "no clustering top 100 genes")
+heatmap(as.matrix(log.avgExpCleanNorm[c(row.names(topTableType[1:100,])),]),scale = "none", Rowv = NA, main = "clustering top 100 genes")
+
 
 #reorder genes in expression data based on top table.
