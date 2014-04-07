@@ -24,3 +24,7 @@ write.table(rownames(tinyTable), file = 'expression.txt', quote = FALSE, col.nam
 # Methylation Union against Expression
 all.methylation.intersect.expression <- intersect(rownames(tinyTable), union(rownames(tinyGene), rownames(tinyPromoter)))
 write.table(all.methylation.intersect.expression, file = 'all.methylation.intersect.expression.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
+
+# Triple Intersect
+triple.intersect <- intersect(intersect(rownames(tinyGene), rownames(tinyPromoter)), rownames(tinyTable))
+write.table(triple.intersect, file = 'triple.intersect.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
