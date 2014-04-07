@@ -192,8 +192,10 @@ dev.off()
 
 #### Example correlation xyplot
 library(lattice)
+pdf("../plots/correlation_example.pdf")
 xyplot(topExpG.shared[,1]~topMethylG.shared[,1], type=c("p","r"), xlab="Mehtylation M Values",
        ylab="Log(expression)", main="Relationship between methylation and expression")
+dev.off()
 xyplot(expP.shared[,1]~methylP.shared[,1], type=c("p","r"))
 
 # fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
