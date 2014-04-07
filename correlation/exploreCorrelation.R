@@ -53,11 +53,11 @@ methylG.shared <- methylGene[shared_genesG,samples]
 # cor(log(exp.shared[,3]), methyl.shared[,3], use="complete.obs")
 
 genome.corP <- sapply(samples, function(x){
-  cor(log(expP.shared[,x]), methylP.shared[,x], use="complete.obs")
+  cor(expP.shared[,x], methylP.shared[,x], use="complete.obs")
 })
 
 genome.corG <- sapply(samples, function(x){
-  cor(log(expG.shared[,x]), methylG.shared[,x], use="complete.obs")
+  cor(expG.shared[,x], methylG.shared[,x], use="complete.obs")
 })
 
 ids <- read.table("../IDs.tsv", header=T, sep="\t")
@@ -97,10 +97,10 @@ topMethylG.shared <- methylGene[diff_sharedG,samples]
 # cor(log(exp.shared[,3]), methyl.shared[,3], use="complete.obs")
 
 top.genome.corP <- sapply(samples, function(x){
-  cor(log(topExpP.shared[,x]), topMethylP.shared[,x], use="complete.obs")
+  cor(topExpP.shared[,x], topMethylP.shared[,x], use="complete.obs")
 })
 top.genome.corG <- sapply(samples, function(x){
-  cor(log(topExpG.shared[,x]), topMethylG.shared[,x], use="complete.obs")
+  cor(topExpG.shared[,x], topMethylG.shared[,x], use="complete.obs")
 })
 
 cordat$topcorP <- top.genome.corP[cordat$gsatid]
@@ -188,6 +188,13 @@ plot.new()
 venn.plot.2 <- venn.diagram(venn.combine.2, filename = NULL, fill = c('red', 'blue', 'green'))
 grid.draw(venn.plot.2)
 dev.off()
+
+
+#### Example correlation xyplot
+library(lattice)
+xyplot(topExpG.shared[,1]~topMethylG.shared[,1], type=c("p","r"), xlab="Mehtylation M Values",
+       ylab="Log(expression)", main="Relationship between methylation and expression")
+xyplot(expP.shared[,1]~methylP.shared[,1], type=c("p","r"))
 
 # fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
 # summary(fit)
