@@ -90,10 +90,14 @@ save(avgMethylByGeneHit,
 save(avgMethylByGenePromoterHit,
      file = "450kMethylationData_geneLevelPromoterAverage_hit.RData")
 
-
 #-------------------------------
 # Plotting work
 #-------------------------------
+# See the distribution of adjusted p-values
+ggplot(avgMethylByGeneCleanHit, aes(x = adj.P.Val, y = ..density..)) + 
+	stat_density(geom = "line") + 
+	xlim(0, 1e-30)
+
 # Visualize top x hits in heatmap
 howMany <- 1000
 topForHeat <- lapply(hit, function(x){head(x, n = howMany)})
@@ -124,24 +128,36 @@ Map(function(beta, name) {
 }, hitBeta, dataAlias)
 
 
-# Visualize as Stripplot
-top5 <- lapply(hit, function(x){head(x, n = 5)})
-hitBeta <- Map(function(top, beta){
-	subset(beta, rownames(beta) %in% rownames(top))
-}, top5, getData(betasets))
+# Visualize as Stripplot (3 top; 2 bottom)
+stripList <- lapply(hit, function(x){
+	rbind(head(x, n = 3), tail(x, n = 2))
+})
+stripBeta <- Map(function(top, beta){
+	tmp <- subset(beta, rownames(beta) %in% rownames(top))
+	tmp[rownames(top), ]
+}, stripList, getData(betasets))
 
 getStrip <- function(data, meta) {
 	tmp <- melt(data)
 	colnames(tmp) <- c("gene", "sample", "beta")
 	tmp <- cbind(tmp, cellType = meta$cellTypeSimple[tmp$sample])
-	
+	tmp$gene <- factor(tmp$gene, levels = rownames(data))
+	# tmp$cellType <- factor(tmp$cellType, levels = c("stem", "somatic"))
+
 	return (ggplot(tmp, aes(cellType, beta, color = cellType)) +
 		geom_point(position = position_jitter(width = 0.05)) +
 		stat_summary(fun.y = mean, aes(group = 1), geom = "line", color = "black") + 
 		facet_grid(~ gene) + xlab("Cell Type") + ylab("Beta Value") +
-		labs(title = "Top 5 DMR") + 
+		labs(title = "Top 3 DMR Hits + 2 Non-hits") + 
 		theme(legend.title=element_blank()))
 }
-top5Strip <- lapply(hitBeta, getStrip, meta)
-top5Strip <- showMultiPlot(top5Strip)
+strip5Plot <- lapply(stripBeta, getStrip, meta)
+strip5Plot <- showMultiPlot(strip5Plot)
+
+Map(function(beta, name) {
+	pdf(paste("strip", name, "top-3-bot-2.pdf", sep = "-"),
+	    width = 10, height = 10)
+	print(getStrip(beta, meta))
+	dev.off()
+}, stripBeta, dataAlias)
 
