@@ -18,8 +18,9 @@ write.table(methylation.union, file = 'methylation.all.txt', quote = FALSE, col.
 write.table(rownames(tinyGene), file = 'methylation.gene.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
 write.table(rownames(tinyPromoter), file = 'methylation.promoter.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
 
-triple.intersect <- intersect(intersect(rownames(tinyGene), rownames(tinyPromoter)), rownames(tinyTable))
-triple.intersect.table <- data.frame(ID = triple.intersect, gMethyl = tinyGene[triple.intersect,]$adj.P.Val, pMethyl = tinyPromoter[triple.intersect,]$adj.P.Val, gExp = tinyTable[triple.intersect,]$adj.P.Val)
+# Differential Expression
+write.table(rownames(tinyTable), file = 'expression.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
 
-# Writing HUGO files for downstream GO-Analysis
-write.table(triple.intersect.table.names, file = '3IHUGO.txt', quote = FALSE,col.names = FALSE, row.names = FALSE)
+# Methylation Union against Expression
+all.methylation.intersect.expression <- intersect(rownames(tinyTable), union(rownames(tinyGene), rownames(tinyPromoter)))
+write.table(all.methylation.intersect.expression, file = 'all.methylation.intersect.expression.txt', quote = FALSE, col.names = FALSE, row.names = FALSE)
