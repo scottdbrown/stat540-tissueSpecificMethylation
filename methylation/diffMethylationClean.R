@@ -152,7 +152,7 @@ strip5Plot <- lapply(stripBeta, getStrip, meta)
 strip5Plot <- showMultiPlot(strip5Plot)
 
 Map(function(beta, name) {
-	pdf(paste("strip", name, "top-3-bot-2.pdf", sep = "-"),
+	pdf(paste("strip", name, "top-3-bot-2-w-outlier.pdf", sep = "-"),
 	    width = 10, height = 10)
 	print(getStrip(beta, meta))
 	dev.off()
