@@ -125,46 +125,57 @@ dev.off()
 
 #TODO: Statistical analysis of result.
 
-with(subset(allcordat, group=="All" & methyl=="GeneAverage"),
+a <- with(subset(allcordat, group=="All" & methyl=="GeneAverage"),
      t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
 
-with(subset(allcordat, group=="Differential" & methyl=="GeneAverage"),
+b <- with(subset(allcordat, group=="Differential" & methyl=="GeneAverage"),
      t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
 
-with(subset(allcordat, group=="All" & methyl=="PromoterAverage"),
+c <- with(subset(allcordat, group=="All" & methyl=="PromoterAverage"),
      t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
 
-with(subset(allcordat, group=="Differential" & methyl=="PromoterAverage"),
+d <- with(subset(allcordat, group=="Differential" & methyl=="PromoterAverage"),
      t.test(cor[cell=="Somatic"], cor[cell=="Stem"]))$p.val
 
 #----------------
 
-with(subset(allcordat, methyl=="GeneAverage" & cell=="Somatic"),
+e <- with(subset(allcordat, methyl=="GeneAverage" & cell=="Somatic"),
      t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
 
-with(subset(allcordat, methyl=="GeneAverage" & cell=="Stem"),
+f <- with(subset(allcordat, methyl=="GeneAverage" & cell=="Stem"),
      t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
 
-with(subset(allcordat, methyl=="PromoterAverage" & cell=="Somatic"),
+g <- with(subset(allcordat, methyl=="PromoterAverage" & cell=="Somatic"),
      t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
 
-with(subset(allcordat, methyl=="PromoterAverage" & cell=="Stem"),
+h <- with(subset(allcordat, methyl=="PromoterAverage" & cell=="Stem"),
      t.test(cor[group=="All"], cor[group=="Differential"]))$p.val
 
 #----------------
 
-with(subset(allcordat, group=="All" & cell=="Somatic"),
+i <- with(subset(allcordat, group=="All" & cell=="Somatic"),
      t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
 
-with(subset(allcordat, group=="All" & cell=="Stem"),
+j <- with(subset(allcordat, group=="All" & cell=="Stem"),
      t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
 
-with(subset(allcordat, group=="Differential" & cell=="Somatic"),
+k <- with(subset(allcordat, group=="Differential" & cell=="Somatic"),
      t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
 
-with(subset(allcordat, group=="Differential" & cell=="Stem"),
+l <- with(subset(allcordat, group=="Differential" & cell=="Stem"),
      t.test(cor[methyl=="GeneAverage"], cor[methyl=="PromoterAverage"]))$p.val
 
+
+t.test.res <- data.frame(Comparison=c("Cell","Cell","Cell","Cell",
+                                      "Group","Group","Group","Group",
+                                      "Methyl_strategy","Methyl_strategy","Methyl_strategy","Methyl_strategy"),
+                         Context=c("All_GeneAverage","Differential_GeneAverage","All_PromoterAverage","Differential_PromoterAverage",
+                                   "GeneAverage_Somatic","GeneAverage_Stem","PromoterAverage_Somatic","PromoterAverage_Stem",
+                                   "All_Somatic","All_Stem","Differential_Somatic","Differential_Stem"),
+                         p.value=c(a,b,c,d,e,f,g,h,i,j,k,l))
+
+library(knitr)
+kable(t.test.res)
 
 # Venn Diagram Code (Nat)
 
