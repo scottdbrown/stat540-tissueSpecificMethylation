@@ -207,8 +207,33 @@ pdf("../plots/correlation_example.pdf")
 xyplot(topExpG.shared[,1]~topMethylG.shared[,1], type=c("p","r"), xlab="Mehtylation M Values",
        ylab="Log(expression)", main="Relationship between methylation and expression")
 dev.off()
-xyplot(expP.shared[,1]~methylP.shared[,1], type=c("p","r"))
+xyplot(topExpP.shared[,2]~topMethylP.shared[,2], type=c("p","r"))
 
+
+library(ggplot2)
+ggdat <- data.frame(exp=topExpP.shared[,2], meth=topMethylP.shared[,2])
+
+lm_eqn = function(m) {
+  
+  l <- list(a = format(coef(m)[1], digits = 2),
+            b = format(abs(coef(m)[2]), digits = 2),
+            r2 = format(summary(m)$r.squared, digits = 3));
+  
+  if (coef(m)[2] >= 0)  {
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2,l)
+  } else {
+    eq <- substitute(italic(y) == a - b %.% italic(x)*","~~italic(r)^2~"="~r2,l)    
+  }
+  
+  as.character(as.expression(eq));                 
+}
+
+
+pdf("../plots/example_correlation.pdf")
+ggplot(ggdat, aes(meth, exp)) + geom_point(alpha=0.5) + geom_smooth(method='lm') +
+  annotate("text", x = 3, y = 14, label = lm_eqn(lm(exp ~ meth, ggdat)), colour="black", size = 5, parse=TRUE) +
+  xlab("Methylation") + ylab("log(Expression)") + ggtitle("Correlation between Methylation and Expression")
+dev.off()
 # fit <- lm(cor~0+cell+group+methyl+cell*group+cell*methyl+group*methyl+cell*group*methyl, allcordat)
 # summary(fit)
 # 
