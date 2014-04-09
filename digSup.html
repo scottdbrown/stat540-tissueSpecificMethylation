@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STAT 540 - Digital Supplement</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<p>An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression   </p>
+
+<h1>STAT 540 - Digital Supplement</h1>
+
+<h2>Poster</h2>
+
+<p>A pdf of the <a href="poster/gsat540_v2.pdf">printed poster</a> is available.</p>
+
+<h2>Data Acquisition</h2>
+
+<p>We obtained data from the <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">Nazor et al. Cell Stem Cell 2012</a><sup><sup>1</sup></sup> study.  </p>
+
+<p>All data was availble on <a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a>. 450K Methylation Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848">GSE31848</a>, and was acquired via the <a href="dataAcquisition/getMethylation.R">getMethylation.R</a> script. HT12v3 Expression Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652">GSE30652</a>, and was acquired via the <a href="dataAcquisition/getExpression.R">getExpression.R</a> script.</p>
+
+<h2>Data Analysis and Output</h2>
+
+<h3>Methylation</h3>
+
+<p>We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the <code>IlluminaHumanMethylation450k.db</code> R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in <a href="methylation/assignMethylationToGene.R">assignMethylationToGene.R</a>.</p>
+
+<p><strong>TO BE FILLED IN</strong></p>
+
+<h3>Expression</h3>
+
+<p>As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in <a href="expression/RNAPreProc.R">RNAPreProc.R</a>.</p>
+
+<p><strong>TO BE FILLED IN</strong></p>
+
+<h3>Correlation</h3>
+
+<h2>Future Work</h2>
+
+<p>TO BE FLESHED OUT MORE</p>
+
+<ul>
+<li>Regarding methylation, looking at CpG Islands, Gene Body separate from promoter, etc.</li>
+<li>binarizing expression and methylation prior to looking at correlation (up/downregulated expression and hyper/hypomethylation)</li>
+</ul>
+
+<h2>References</h2>
+
+<ol>
+<li>Nazor, Kristopher L., et al. &ldquo;Recurrent variations in DNA methylation in human pluripotent stem cells and their differentiated derivatives.&rdquo; Cell stem cell 10.5 (2012): 620-634. <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">PubMed Link</a></li>
+</ol>
+
+</body>
+
+</html>
+
