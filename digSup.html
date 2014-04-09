@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>STAT 540 - Digital Supplement</title>
+<title>An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression</title>
 
 <style type="text/css">
 body, td {
@@ -142,7 +142,7 @@ hr {
 </head>
 
 <body>
-<p>An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression   </p>
+<h1>An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression</h1>
 
 <h1>STAT 540 - Digital Supplement</h1>
 
@@ -171,6 +171,20 @@ hr {
 <p><strong>TO BE FILLED IN</strong></p>
 
 <h3>Correlation</h3>
+
+<p>The <a href="correlation/exploreCorrelation.R">exploreCorrelation.R</a> script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform, using the log2 transformed expression values and normalized M-values for methylation.</p>
+
+<p>A random sample was chosen to illustrate the correlation between methylation M values and log2 expression values, seen <a href="plots/example_correlation.pdf">here</a>. </p>
+
+<p>The main figure showing the differences in correlations between groups is <a href="plots/correlations_by_cell_group_CpG2.pdf">here</a>. Pair-wise t-tests were performed for all meaningful pairs (keeping two variables constant while changing the third), and the results are summarized in <a href="correlation/ttest_table1.xlsx">ttest_table1.xlsx</a>. Grey boxes are the groups being compared, while coloured boxes indicate the status of the other variables.</p>
+
+<p><strong>Something about the Venn Diagrams?</strong></p>
+
+<p><strong>TO BE FILLED IN</strong></p>
+
+<h3>GO Analysis</h3>
+
+<p><strong>TO BE FILLED IN</strong></p>
 
 <h2>Future Work</h2>
 

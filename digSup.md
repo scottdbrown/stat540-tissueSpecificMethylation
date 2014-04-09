@@ -1,6 +1,7 @@
-An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression   
+An Exploration of DNA Methylation in Stem vs. Somatic Cells, and How It Relates to Gene Expression
+====================================
 STAT 540 - Digital Supplement
-========================================================
+====================================
 
 Poster
 ---------
@@ -26,7 +27,19 @@ As the expression array had more than 1 probe for a given gene in some cases, we
 **TO BE FILLED IN**
 
 ### Correlation
-The [exploreCorrelation](correlation/exploreCorrelation.R) script takes the TopTable results from the differential methylation and differential expression analysis as inputs. 
+The [exploreCorrelation.R](correlation/exploreCorrelation.R) script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform, using the log2 transformed expression values and normalized M-values for methylation.
+
+A random sample was chosen to illustrate the correlation between methylation M values and log2 expression values, seen [here](plots/example_correlation.pdf). 
+
+The main figure showing the differences in correlations between groups is [here](plots/correlations_by_cell_group_CpG2.pdf). Pair-wise t-tests were performed for all meaningful pairs (keeping two variables constant while changing the third), and the results are summarized in [ttest_table1.xlsx](correlation/ttest_table1.xlsx). Grey boxes are the groups being compared, while coloured boxes indicate the status of the other variables.
+
+**Something about the Venn Diagrams?**
+
+**TO BE FILLED IN**
+
+### GO Analysis
+
+**TO BE FILLED IN**
 
 
 Future Work
