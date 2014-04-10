@@ -44,6 +44,10 @@ Venn diagrams were made to show [A)](plots/gene_overlap_venn.pdf) the overlap be
 
 We used GOrilla^^2 ...takes a ranked gene list...our lists were ranked by differnetial p-value...intersects used...rough number of genes...**TO BE FILLED IN**
 
+We used [GOrilla] (http://www.biomedcentral.com/1471-2105/10/48)^^2, a web-based GO-enrichment tool on our analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, [DAVID] (http://david.abcc.ncifcrf.gov/) only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).
+
+**TBC**
+
 
 Future Work
 -------------
