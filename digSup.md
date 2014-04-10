@@ -31,7 +31,7 @@ To normalize the expression values...**TO BE FILLED IN**
 To perform differential expression...**TO BE FILLED IN**
 
 ### Correlation
-The [`exploreCorrelation.R`](correlation/exploreCorrelation.R) script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.
+The [`exploreCorrelation.R`](correlation/exploreCorrelation.R) script takes the TopTable results from the differential methylation and differential expression analysis as inputs, as well as the normalized data for both. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.
 
 A random sample was chosen to illustrate the correlation between methylation M values and log2 expression values, seen [here](plots/example_correlation.pdf). 
 
