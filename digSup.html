@@ -154,13 +154,13 @@ hr {
 
 <p>We obtained data from the <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">Nazor et al. Cell Stem Cell 2012</a><sup><sup>1</sup></sup> study.  </p>
 
-<p>All data was availble on <a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a>. 450K Methylation Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848">GSE31848</a>, and was acquired via the <a href="dataAcquisition/getMethylation.R">getMethylation.R</a> script. HT12v3 Expression Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652">GSE30652</a>, and was acquired via the <a href="dataAcquisition/getExpression.R">getExpression.R</a> script.</p>
+<p>All data was availble on <a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a>. 450K Methylation Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848"><code>GSE31848</code></a>, and was acquired via the <a href="dataAcquisition/getMethylation.R"><code>getMethylation.R</code></a> script. HT12v3 Expression Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652"><code>GSE30652</code></a>, and was acquired via the <a href="dataAcquisition/getExpression.R"><code>getExpression.R</code></a> script.</p>
 
 <h2>Data Analysis and Output</h2>
 
 <h3>Methylation</h3>
 
-<p>We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the <code>IlluminaHumanMethylation450k.db</code> R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in <a href="methylation/assignMethylationToGene.R">assignMethylationToGene.R</a>.</p>
+<p>We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the <code>IlluminaHumanMethylation450k.db</code> R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in <a href="methylation/assignMethylationToGene.R"><code>assignMethylationToGene.R</code></a>.</p>
 
 <p>To normalize the methylation values&hellip;<strong>TO BE FILLED IN</strong></p>
 
@@ -168,7 +168,7 @@ hr {
 
 <h3>Expression</h3>
 
-<p>As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in <a href="expression/RNAPreProc.R">RNAPreProc.R</a>.</p>
+<p>As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in <a href="expression/RNAPreProc.R"><code>RNAPreProc.R</code></a>.</p>
 
 <p>To normalize the expression values&hellip;<strong>TO BE FILLED IN</strong></p>
 
@@ -176,7 +176,7 @@ hr {
 
 <h3>Correlation</h3>
 
-<p>The <a href="correlation/exploreCorrelation.R">exploreCorrelation.R</a> script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.</p>
+<p>The <a href="correlation/exploreCorrelation.R"><code>exploreCorrelation.R</code></a> script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.</p>
 
 <p>A random sample was chosen to illustrate the correlation between methylation M values and log2 expression values, seen <a href="plots/example_correlation.pdf">here</a>. </p>
 
