@@ -162,29 +162,31 @@ hr {
 
 <p>We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the <code>IlluminaHumanMethylation450k.db</code> R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in <a href="methylation/assignMethylationToGene.R">assignMethylationToGene.R</a>.</p>
 
-<p><strong>TO BE FILLED IN</strong></p>
+<p>To normalize the methylation values&hellip;<strong>TO BE FILLED IN</strong></p>
+
+<p>To perform differential methylation&hellip;<strong>TO BE FILLED IN</strong></p>
 
 <h3>Expression</h3>
 
 <p>As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in <a href="expression/RNAPreProc.R">RNAPreProc.R</a>.</p>
 
-<p><strong>TO BE FILLED IN</strong></p>
+<p>To normalize the expression values&hellip;<strong>TO BE FILLED IN</strong></p>
+
+<p>To perform differential expression&hellip;<strong>TO BE FILLED IN</strong></p>
 
 <h3>Correlation</h3>
 
-<p>The <a href="correlation/exploreCorrelation.R">exploreCorrelation.R</a> script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform, using the log2 transformed expression values and normalized M-values for methylation.</p>
+<p>The <a href="correlation/exploreCorrelation.R">exploreCorrelation.R</a> script takes the TopTable results from the differential methylation and differential expression analysis as inputs. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.</p>
 
 <p>A random sample was chosen to illustrate the correlation between methylation M values and log2 expression values, seen <a href="plots/example_correlation.pdf">here</a>. </p>
 
-<p>The main figure showing the differences in correlations between groups is <a href="plots/correlations_by_cell_group_CpG2.pdf">here</a>. Pair-wise t-tests were performed for all meaningful pairs (keeping two variables constant while changing the third), and the results are summarized in <a href="correlation/ttest_table1.xlsx">ttest_table1.xlsx</a>. Grey boxes are the groups being compared, while coloured boxes indicate the status of the other variables.</p>
+<p>The main figure showing the differences in correlations between tissue type, gene group, and methylation metric is <a href="plots/correlations_by_cell_group_CpG2.pdf">here</a>. Pair-wise t-tests were performed for all meaningful pairs (keeping two variables constant while changing the third), and the results are summarized in <a href="correlation/ttest_table1.xlsx">ttest_table1.xlsx</a>. Grey boxes are the groups being compared, while coloured boxes indicate the status of the other variables.</p>
 
-<p><strong>Something about the Venn Diagrams?</strong></p>
-
-<p><strong>TO BE FILLED IN</strong></p>
+<p>Venn diagrams were made to show <a href="plots/gene_overlap_venn.pdf">A)</a> the overlap between genes covered by the different platforms and metrics, and <a href="plots/differential_gene_overlap_venn.pdf">B)</a> the overlap between differentially expressed and methylated genes on the different platforms and metrics. Note that differential analysis was done on the total set of genes available on that platform, and not only on the intersecting genes between platforms.</p>
 
 <h3>GO Analysis</h3>
 
-<p><strong>TO BE FILLED IN</strong></p>
+<p>We used GOrilla<sup><sup>2</sup></sup> &hellip;takes a ranked gene list&hellip;our lists were ranked by differnetial p-value&hellip;intersects used&hellip;rough number of genes&hellip;<strong>TO BE FILLED IN</strong></p>
 
 <h2>Future Work</h2>
 
@@ -198,7 +200,8 @@ hr {
 <h2>References</h2>
 
 <ol>
-<li>Nazor, Kristopher L., et al. &ldquo;Recurrent variations in DNA methylation in human pluripotent stem cells and their differentiated derivatives.&rdquo; Cell stem cell 10.5 (2012): 620-634. <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">PubMed Link</a></li>
+<li>Nazor, Kristopher L., et al. &ldquo;Recurrent variations in DNA methylation in human pluripotent stem cells and their differentiated derivatives.&rdquo; Cell stem cell 10.5 (2012): 620-634. <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">Link</a></li>
+<li>Eden, Eran, et al. &ldquo;GOrilla: a tool for discovery and visualization of enriched GO terms in ranked gene lists.&rdquo; BMC bioinformatics 10.1 (2009): 48. <a href="http://www.biomedcentral.com/1471-2105/10/48">Link</a></li>
 </ol>
 
 </body>
