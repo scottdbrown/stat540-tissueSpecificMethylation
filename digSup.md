@@ -26,9 +26,13 @@ To perform differential methylation...**TO BE FILLED IN**
 ### Expression
 As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in [`RNAPreProc.R`](expression/RNAPreProc.R).
 
-To normalize the expression values...**TO BE FILLED IN**
+The data was loaded after the above conversions and log2 transformed. 
 
-To perform differential expression...**TO BE FILLED IN**
+To normalize the expression values we used normalize.quantiles from the preprocessing package in Bioconductor. There were no obvious outliers since there are all different types of tissues in the data so all the Samples were kept for analysis. See ['Expression_Analysis.html'](expression/Expression_Analysis.html)
+
+To perform differential expression I used limma from Biocoductor. Stem cells were set as the intersect and the Somatic cells were then compared. The results from topTable can be found here ['expTypeTable.tsv](expression/expTyoeTable.tsv). 
+
+
 
 ### Correlation
 The [`exploreCorrelation.R`](correlation/exploreCorrelation.R) script takes the TopTable results from the differential methylation and differential expression analysis as inputs, as well as the normalized data for both. Pearson correlations are calculated for genes present on each platform (the intersect), using the log2 transformed expression values and normalized M-values for methylation.
@@ -46,6 +50,8 @@ We used GOrilla^^2 ...takes a ranked gene list...our lists were ranked by differ
 
 We used [GOrilla] (http://www.biomedcentral.com/1471-2105/10/48)^^2, a web-based GO-enrichment tool on our analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, [DAVID] (http://david.abcc.ncifcrf.gov/) only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).
 
+Some work related to hESC specfic genes and GO analysis [README.md](goEnrichment/README.md). This was ultimately discarded since nothing useful came out of the DAVID GO analysis of hESC genes and where they intersected with our data or results looking at the top genes from expression or methylation (after FDR cut off).
+
 **TBC**
 
 
@@ -53,7 +59,8 @@ Future Work
 -------------
 TO BE FLESHED OUT MORE
 - Regarding methylation, looking at CpG Islands, Gene Body separate from promoter, etc.
-- binarizing expression and methylation prior to looking at correlation (up/downregulated expression and hyper/hypomethylation)
+- binarizing expression and methylation prior to looking at correlation (up/downregulated expression and hyper/hypomethylation) 
+- expand the work to include all the samples from the paper so that tissue specific methylation and expression can be analyzed
 
 
 References
