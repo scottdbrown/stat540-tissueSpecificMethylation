@@ -22,6 +22,7 @@ We chose two methods of assigning methylation status to a gene. After obtaining 
 Based on the assignment of methylation status, there were two datasets:
 * average methylation over gene annotation (gene body + promoter)
 * average methylation over the promoter-region of the gene
+
 NA values for some genes/promoters in those datasets had to be removed. Also, the metadata needed to be re-parsed so it could be used for the design matrix in differential methylation analysis. The code for this clean-up is in [`cleanMethylation.R`](methylation/cleanMethylation.R). 
 
 Exploratory analysis was done to inspect for any outliers or batch effects. Possible outliers were spotted in initial sample-to-sample correlation ([`gene-level`](plots/methyl-1-explore/cor-gene-before-norm.pdf), [`promoter-level`](plots/methyl-1-explore/cor-promoter-before-norm.pdf)). The suspected outliers were scatter plotted against its own cell-type ([`1`](plots/methyl-1-explore/outlier-es-gene.pdf), [`2`](plots/methyl-1-explore/outlier-es-promoter.pdf), [`3`](plots/methyl-1-explore/outlier-ips-gene.pdf), [`4`](plots/methyl-1-explore/outlier-ips-promoter.pdf)). Though those outliers seemed to deviate from their cell-type, we could not decide if the deviation was caused by tissue-specific/cell-line-specific effect due to lack of replicates. Hence, we decided not to remove any samples for the downstream analysis. The code for this analysis is in [`exploreMethylation.R`](methylation/exploreMethylation.R). 
