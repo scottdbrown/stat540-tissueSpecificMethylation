@@ -11,7 +11,7 @@ Data Acquisition
 ---------------------
 We obtained data from the [Nazor et al. Cell Stem Cell 2012](http://www.ncbi.nlm.nih.gov/pubmed/22560082) [1] study.  
 
-All data was availble on [GEO](http://www.ncbi.nlm.nih.gov/geo/). 450K Methylation Array data was available under [`GSE31848`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848), and was acquired via the [`getMethylation.R`](dataAcquisition/getMethylation.R) script. HT12v3 Expression Array data was available under [`GSE30652`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652), and was acquired via the [`getExpression.R`](dataAcquisition/getExpression.R) script.
+All data was available on [GEO](http://www.ncbi.nlm.nih.gov/geo/). 450K Methylation Array data was available under [`GSE31848`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848), and was acquired via the [`getMethylation.R`](dataAcquisition/getMethylation.R) script. HT12v3 Expression Array data was available under [`GSE30652`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652), and was acquired via the [`getExpression.R`](dataAcquisition/getExpression.R) script.
 
 Data Analysis and Output
 ----------------------------
