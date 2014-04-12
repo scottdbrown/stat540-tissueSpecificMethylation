@@ -9,7 +9,7 @@ A pdf of the [printed poster](poster/gsat540_v2.pdf) is available.
 
 Data Acquisition
 ---------------------
-We obtained data from the [Nazor et al. Cell Stem Cell 2012](http://www.ncbi.nlm.nih.gov/pubmed/22560082)^^1 study.  
+We obtained data from the [Nazor et al. Cell Stem Cell 2012](http://www.ncbi.nlm.nih.gov/pubmed/22560082) [1] study.  
 
 All data was availble on [GEO](http://www.ncbi.nlm.nih.gov/geo/). 450K Methylation Array data was available under [`GSE31848`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848), and was acquired via the [`getMethylation.R`](dataAcquisition/getMethylation.R) script. HT12v3 Expression Array data was available under [`GSE30652`](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652), and was acquired via the [`getExpression.R`](dataAcquisition/getExpression.R) script.
 
@@ -55,7 +55,7 @@ Venn diagrams were made to show [A)](plots/gene_overlap_venn.pdf) the overlap be
 
 ### GO Analysis
 
-We used [GOrilla](http://www.biomedcentral.com/1471-2105/10/48)^^2, a web-based GO-enrichment tool on our differential analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, [DAVID](http://david.abcc.ncifcrf.gov/) only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).
+We used [GOrilla](http://www.biomedcentral.com/1471-2105/10/48) [2], a web-based GO-enrichment tool on our differential analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, [DAVID](http://david.abcc.ncifcrf.gov/) only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).
 
 For our input data, we first ranked our 'top hit' genes according to the Benjamini-Hochberg corrected P-values, and let GOrilla do the enrichment. We tested for the 3 different GO trunks (process, function and component), but decided to use 'process' mainly to study for biological relevance of the gene. Our gene lists included differentially expressed genes only, differentially methylated genes only, and various intersection combinations of differentially expressed and differentially methylated genes (by promoter or whole gene body).
 
@@ -67,10 +67,10 @@ Some work related to hESC specfic genes and GO analysis: [`README.md`](goEnrichm
 
 Future Work
 -------------
-TO BE FLESHED OUT MORE
 - Regarding methylation, looking at CpG Islands, Gene Body separate from promoter, etc.
 - binarizing expression and methylation prior to looking at correlation (up/downregulated expression and hyper/hypomethylation) 
 - expand the work to include all the samples from the paper so that tissue specific methylation and expression can be analyzed
+- expand the work to include other types of epigenetic marks, to see if certain marks are more important in certain cell types
 
 
 References

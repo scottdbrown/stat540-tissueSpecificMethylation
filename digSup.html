@@ -152,7 +152,7 @@ hr {
 
 <h2>Data Acquisition</h2>
 
-<p>We obtained data from the <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">Nazor et al. Cell Stem Cell 2012</a><sup><sup>1</sup></sup> study.  </p>
+<p>We obtained data from the <a href="http://www.ncbi.nlm.nih.gov/pubmed/22560082">Nazor et al. Cell Stem Cell 2012</a> [1] study.  </p>
 
 <p>All data was availble on <a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a>. 450K Methylation Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31848"><code>GSE31848</code></a>, and was acquired via the <a href="dataAcquisition/getMethylation.R"><code>getMethylation.R</code></a> script. HT12v3 Expression Array data was available under <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30652"><code>GSE30652</code></a>, and was acquired via the <a href="dataAcquisition/getExpression.R"><code>getExpression.R</code></a> script.</p>
 
@@ -162,9 +162,20 @@ hr {
 
 <p>We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the <code>IlluminaHumanMethylation450k.db</code> R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in <a href="methylation/assignMethylationToGene.R"><code>assignMethylationToGene.R</code></a>.</p>
 
-<p>To normalize the methylation values&hellip;<strong>TO BE FILLED IN</strong></p>
+<p>Based on the assignment of methylation status, there were two datasets:</p>
 
-<p>To perform differential methylation&hellip;<strong>TO BE FILLED IN</strong></p>
+<ul>
+<li>average methylation over gene annotation (gene body + promoter)</li>
+<li>average methylation over the promoter-region of the gene</li>
+</ul>
+
+<p>NA values for some genes/promoters in those datasets had to be removed. Also, the metadata needed to be re-parsed so it could be used for the design matrix in differential methylation analysis. The code for this clean-up is in <a href="methylation/cleanMethylation.R"><code>cleanMethylation.R</code></a>. </p>
+
+<p>Exploratory analysis was done to inspect for any outliers or batch effects. Possible outliers were spotted in initial sample-to-sample correlation (<a href="plots/methyl-1-explore/cor-gene-before-norm.pdf"><code>gene-level</code></a>, <a href="plots/methyl-1-explore/cor-promoter-before-norm.pdf"><code>promoter-level</code></a>). The suspected outliers were scatter plotted against their own cell-types (<a href="plots/methyl-1-explore/outlier-es-gene.pdf"><code>1</code></a>, <a href="plots/methyl-1-explore/outlier-es-promoter.pdf"><code>2</code></a>, <a href="plots/methyl-1-explore/outlier-ips-gene.pdf"><code>3</code></a>, <a href="plots/methyl-1-explore/outlier-ips-promoter.pdf"><code>4</code></a>). Though those outliers seemed to deviate from their cell-type, we could not decide if the deviation was caused by tissue-specific/cell-line-specific effect due to lack of replicates. Hence, we decided not to remove any samples for the downstream analysis. The code for this analysis is in <a href="methylation/exploreMethylation.R"><code>exploreMethylation.R</code></a>. </p>
+
+<p>To normalize the methylation values, <code>betaqn()</code> from <code>wateRmelon</code> was applied to the raw beta values, and the values were subsequently converted to M-values using <code>beta2m()</code>. The code for normalization is in <a href="methylation/normMethylationClean.R"><code>normMethylationClean.R</code></a>. The beta-value density plot is also available (<a href="plots/methyl-2-norm-w-outlier/beta-density-gene-both-norm-clean.pdf"><code>gene-level</code></a>, <a href="plots/methyl-2-norm-w-outlier/beta-density-promoter-both-norm-clean.pdf"><code>promoter-level</code></a>).</p>
+
+<p>To perform differential methylation, <code>limma</code> was used on M-values (converted in the previous step). Stem cells were set as the intercept and the somatic cells were compared for differential methylation. For the code, please see <a href="methylation/diffMethylationClean.R"><code>diffMethylationClean.R</code></a>. Stripplots of top 3 hits and 2 non-hits were generated for <a href="plots/methyl-4-diff-strip-w-outlier/strip-gene-top-3-bot-2-w-outlier.pdf"><code>gene-level</code></a> and <a href="plots/methyl-4-diff-strip-w-outlier/strip-promoter-top-3-bot-2-w-outlier.pdf"><code>promoter-level</code></a>.</p>
 
 <h3>Expression</h3>
 
@@ -188,22 +199,21 @@ hr {
 
 <h3>GO Analysis</h3>
 
-<p>We used GOrilla<sup><sup>2</sup></sup> &hellip;takes a ranked gene list&hellip;our lists were ranked by differnetial p-value&hellip;intersects used&hellip;rough number of genes&hellip;<strong>TO BE FILLED IN</strong></p>
-
-<p>We used <a href="http://www.biomedcentral.com/1471-2105/10/48">GOrilla</a><sup><sup>2,</sup></sup> a web-based GO-enrichment tool on our differential analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, <a href="http://david.abcc.ncifcrf.gov/">DAVID</a> only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).</p>
+<p>We used <a href="http://www.biomedcentral.com/1471-2105/10/48">GOrilla</a> [2], a web-based GO-enrichment tool on our differential analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, <a href="http://david.abcc.ncifcrf.gov/">DAVID</a> only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).</p>
 
 <p>For our input data, we first ranked our &#39;top hit&#39; genes according to the Benjamini-Hochberg corrected P-values, and let GOrilla do the enrichment. We tested for the 3 different GO trunks (process, function and component), but decided to use &#39;process&#39; mainly to study for biological relevance of the gene. Our gene lists included differentially expressed genes only, differentially methylated genes only, and various intersection combinations of differentially expressed and differentially methylated genes (by promoter or whole gene body).</p>
+
+<p>We found that gene expression alone is adequate in telling apart somatic cells and stem cells, while methylation data, or gene expression combined with methylation data was unable to replicate the same results. Interestingly while the FDR values are very poor, some of the gene lists associated with methylation seem to give terms that reflect the contributary somatic tissues used. In addition, if we were to delve into the enrichment for function terms, we can see rather telling enrichment of methylated genes having functions that are strongly associated with DNA-binding etc, suggesting that our preliminary GO analysis has much room for further analysis and interpretation.</p>
 
 <p>Some work related to hESC specfic genes and GO analysis: <a href="goEnrichment/README.md"><code>README.md</code></a>. This was ultimately discarded since nothing useful came out of the DAVID GO analysis of hESC genes and where they intersected with our data or results looking at the top genes from expression or methylation (after FDR cut off).</p>
 
 <h2>Future Work</h2>
 
-<p>TO BE FLESHED OUT MORE</p>
-
 <ul>
 <li>Regarding methylation, looking at CpG Islands, Gene Body separate from promoter, etc.</li>
 <li>binarizing expression and methylation prior to looking at correlation (up/downregulated expression and hyper/hypomethylation) </li>
 <li>expand the work to include all the samples from the paper so that tissue specific methylation and expression can be analyzed</li>
+<li>expand the work to include other types of epigenetic marks, to see if certain marks are more important in certain cell types</li>
 </ul>
 
 <h2>References</h2>
