@@ -50,9 +50,10 @@ We used GOrilla^^2 ...takes a ranked gene list...our lists were ranked by differ
 
 We used [GOrilla](http://www.biomedcentral.com/1471-2105/10/48)^^2, a web-based GO-enrichment tool on our differential analysis results to evaluate for biological relevance. GOrilla requires only ranked gene lists and has no known gene number limits, which was both suitable for our use and generated results at a very fast rate. (Comparatively, [DAVID](http://david.abcc.ncifcrf.gov/) only accepts at most 3000 HUGO/Official gene symbols, which is unsuitable for our work, as some of our lists exceed 5000 genes).
 
+For our input data, we first ranked our 'top hit' genes according to the Benjamini-Hochberg corrected P-values, and let GOrilla do the enrichment. We tested for the 3 different GO trunks (process, function and component), but decided to use 'process' mainly to study for biological relevance of the gene. Our gene lists included differentially expressed genes only, differentially methylated genes only, and various intersection combinations of differentially expressed and differentially methylated genes (by promoter or whole gene body).
+
 Some work related to hESC specfic genes and GO analysis: [`README.md`](goEnrichment/README.md). This was ultimately discarded since nothing useful came out of the DAVID GO analysis of hESC genes and where they intersected with our data or results looking at the top genes from expression or methylation (after FDR cut off).
 
-**TBC**
 
 
 Future Work
