@@ -19,9 +19,17 @@ Data Analysis and Output
 ### Methylation
 We chose two methods of assigning methylation status to a gene. After obtaining gene annotations for each probe from the `IlluminaHumanMethylation450k.db` R package, and removing probes not annotated to a gene, we averaged all probes in a sample that had an annotation to each gene. We also performed the same averaging, but for probes which were annotated to the promoter region of a gene only. The code for this analysis is in [`assignMethylationToGene.R`](methylation/assignMethylationToGene.R).
 
-To normalize the methylation values...**TO BE FILLED IN**
+Based on the assignment of methylation status, there were two datasets:
+* average methylation over gene annotation (gene body + promoter)
+* average methylation over the promoter-region of the gene
+NA values for some genes/promoters in those datasets had to be removed. Also, the metadata needed to be re-parsed so it could be used for the design matrix in differential methylation analysis. The code for this clean-up is in [`cleanMethylation.R`](methylation/cleanMethylation.R). 
 
-To perform differential methylation...**TO BE FILLED IN**
+Exploratory analysis was done to inspect for any outliers or batch effects. Possible outliers were spotted in initial sample-to-sample correlation ([`gene-level`](plots/methyl-1-explore/cor-gene-before-norm.pdf), [`promoter-level`](plots/methyl-1-explore/cor-promoter-before-norm.pdf)). The suspected outliers were scatter plotted against its own cell-type ([`1`](plots/methyl-1-explore/outlier-es-gene.pdf), [`2`](plots/methyl-1-explore/outlier-es-promoter.pdf), [`3`](plots/methyl-1-explore/outlier-ips-gene.pdf), [`4`](plots/methyl-1-explore/outlier-ips-promoter.pdf)). Though those outliers seemed to deviate from their cell-type, we could not decide if the deviation was caused by tissue-specific/cell-line-specific effect due to lack of replicates. Hence, we decided not to remove any samples for the downstream analysis. The code for this analysis is in [`exploreMethylation.R`](methylation/exploreMethylation.R). 
+
+To normalize the methylation values, `betaqn()` from `wateRmelon` was applied to the raw beta values, and the values were subsequently converted to M-values using `beta2m`. The code for normalization is in [`normMethylationClean.R`](methylation/normMethylationClean.R). The beta-value density plot is also available ([`gene-level`](plots/methyl-2-norm-w-outlier/beta-density-gene-both-norm-clean.pdf), [`promoter-level`](plots/methyl-2-norm-w-outlier/beta-density-promoter-both-norm-clean.pdf)).
+
+To perform differential methylation, `limma` was used on M-values (converted in the previous step). Stem cells were set as the intercept and the somatic cells were compared for differential methylation. For the code, please see [`methylation/diffMethylationClean.R`](methylation/diffMethylationClean.R). Stripplots of top 3 hits and 2 non-hits were generated: [`gene-level`](plots/methyl-4-diff-strip-w-outlier/strip-gene-top-3-bot-2-w-outlier.pdf) and [`promoter-level`](plots/methyl-4-diff-strip-w-outlier/strip-promoter-top-3-bot-2-w-outlier.pdf).
+
 
 ### Expression
 As the expression array had more than 1 probe for a given gene in some cases, we averaged the value from all probes for a given gene, much the same way we did for methylation values. This analysis was taken care of in [`RNAPreProc.R`](expression/RNAPreProc.R).
