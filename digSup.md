@@ -28,7 +28,7 @@ As the expression array had more than 1 probe for a given gene in some cases, we
 
 The data was loaded after the above conversions and log2 transformed. 
 
-To normalize the expression values we used normalize.quantiles from the preprocessing package in Bioconductor. There were no obvious outliers since there are all different types of tissues in the data so all the Samples were kept for analysis. See [`Expression_Analysis.html`](expression/Expression_Analysis.html)
+To normalize the expression values we used normalize.quantiles from the preprocessing package in Bioconductor. There were no obvious outliers since there are all different types of tissues in the data so all the Samples were kept for analysis. See [`Expression_Analysis.md`](expression/Expression_Analysis.md)
 
 To perform differential expression I used limma from Bioconductor. Stem cells were set as the intercept and the Somatic cells were then compared. The results from topTable can be found here [`expTypeTable.tsv`](expression/expTypeTable.tsv). 
 
