@@ -78,3 +78,5 @@ References
 
 1. Nazor, Kristopher L., et al. "Recurrent variations in DNA methylation in human pluripotent stem cells and their differentiated derivatives." Cell stem cell 10.5 (2012): 620-634. [Link](http://www.ncbi.nlm.nih.gov/pubmed/22560082)
 2. Eden, Eran, et al. "GOrilla: a tool for discovery and visualization of enriched GO terms in ranked gene lists." BMC bioinformatics 10.1 (2009): 48. [Link](http://www.biomedcentral.com/1471-2105/10/48)
+3. Phillips, Theresa. "The role of methylation in gene expression." Nature Education 1.1 (2008): 116. [Link](http://www.nature.com/scitable/topicpage/the-role-of-methylation-in-gene-expression-1070)
+4. VanderKraats, Nathan D., et al. "Discovering high-resolution patterns of differential DNA methylation that correlate with gene expression changes." Nucleic acids research 41.14 (2013): 6816-6827. [Link](http://nar.oxfordjournals.org/content/41/14/6816.short)
